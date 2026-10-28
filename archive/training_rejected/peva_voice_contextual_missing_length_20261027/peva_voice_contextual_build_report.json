@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "stage": "build_peva_voice_contextual",
+  "rows": 330,
+  "unique_exact_prompts": 330,
+  "category_distribution": {
+    "alliance_coordination": 30,
+    "casual_conversation": 30,
+    "casual_greeting": 30,
+    "clarification": 30,
+    "disagreement_conflict": 30,
+    "event_discussion": 30,
+    "humor_teasing": 30,
+    "scheduling": 30,
+    "short_reaction": 30,
+    "strategy_game": 30,
+    "unknown_information": 30
+  },
+  "length_band_distribution": {
+    "micro_social": 47,
+    "short": 75,
+    "very_short": 208
+  },
+  "provenance": "original synthetic PEva authoring only; no player/private/public capture or external model output",
+  "review_note": "Technically approved under the user's controlled-pilot authorisation. Automated validation is not represented as human social evaluation.",
+  "network_access_used": false,
+  "runtime_model_modified": false,
+  "output": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\generated\\peva_voice_contextual_source.jsonl",
+  "sha256": "ebada4ad4033e224c4eb15b0c351a5095edb5b7db058b9806f45e460884681ab"
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "stage": "build_peva_voice_social_repair",
+  "rows": 330,
+  "unique_exact_prompts": 330,
+  "category_distribution": {
+    "alliance_coordination": 30,
+    "casual_conversation": 30,
+    "casual_greeting": 30,
+    "clarification": 30,
+    "disagreement_conflict": 30,
+    "event_discussion": 30,
+    "humor_teasing": 30,
+    "scheduling": 30,
+    "short_reaction": 30,
+    "strategy_game": 30,
+    "unknown_information": 30
+  },
+  "length_band_distribution": {
+    "medium": 2,
+    "micro_social": 32,
+    "short": 100,
+    "very_short": 196
+  },
+  "provenance": "original synthetic PEva authoring only; no player/private/public capture or external model output",
+  "review_note": "Each pattern was re-authored after contextual-pilot social benchmark failures. Automated validation is not represented as human social evaluation.",
+  "network_access_used": false,
+  "runtime_model_modified": false,
+  "output": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\generated\\peva_voice_social_repair_source.jsonl",
+  "sha256": "00d4e107de368daea5786145d9d3a3b541be731106cd9bd262c7ce6e2b0e976d"
+}
