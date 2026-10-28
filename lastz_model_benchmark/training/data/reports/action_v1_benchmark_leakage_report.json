@@ -1,0 +1,48 @@
+{
+  "accepted_rows": 2034,
+  "benchmark_cases_dir": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\cases",
+  "checks": {
+    "all_benchmark_case_jsonl_scanned": true,
+    "canonical_prompt_scan_completed": true,
+    "leak_scan_passed": true,
+    "near_similarity_scan_completed": true,
+    "structural_signature_scan_completed": true
+  },
+  "created_at": "2026-10-09T23:55:56+00:00",
+  "critical_errors": [],
+  "fixture_files_scanned": {
+    "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\cases\\action_cases_extended.jsonl": 24,
+    "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\cases\\action_schema_contract.jsonl": 17,
+    "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\cases\\adversarial_action_cases.jsonl": 14,
+    "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\cases\\chat_cases.jsonl": 6,
+    "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\cases\\chat_cases_realistic.jsonl": 7,
+    "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\cases\\decision_cases.jsonl": 10,
+    "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\cases\\production_action_cases.jsonl": 24
+  },
+  "fixture_rows_scanned": 102,
+  "input": {
+    "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\action_v1_deduplicated.jsonl",
+    "rows": 2335,
+    "sha256": "e5fe143c6b4253484f35d49ed9abd8632b3e5702a79af5dd66a6537780fd1010"
+  },
+  "near_threshold": 0.94,
+  "outputs": {
+    "accepted": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\action_v1_leak_checked.jsonl",
+      "rows": 2034,
+      "sha256": "c237ef6bb93aafe517c742003dded14bcd3ff4e395a93b400c22e47c09a791e6"
+    },
+    "rejected": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\rejected\\action_v1_benchmark_leakage_rejected.jsonl",
+      "rows": 301,
+      "sha256": "05ed0dda25ad2358dbb549dcd436e0209902a6d3bacb1b26fa718f96f735476e"
+    }
+  },
+  "passed": true,
+  "rejected_rows": 301,
+  "rejection_reasons": {
+    "semantic benchmark input match": 301
+  },
+  "schema_version": 1,
+  "stage": "check_benchmark_leakage"
+}

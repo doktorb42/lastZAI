@@ -1,0 +1,54 @@
+PEva - test OCR na CPU (poprawiona paczka)
+
+1. Rozpakuj wszystkie trzy pliki do D:\projekty\lastZAI.
+2. Zastap stare PEva_OCR.cmd i peva_ocr_test.py.
+3. Uruchom BlueStacks z Last Z.
+4. Kliknij dwa razy PEva_OCR.cmd.
+5. Za pierwszym razem moze zostac utworzone osobne srodowisko Python i zainstalowane biblioteki.
+6. Program poprosi kolejno o otwarcie mapy, czatu sojuszu i prywatnego.
+7. Wynik trafi do folderu data\test-artifacts\peva_ocr_YYYYMMDD_HHMMSS\raport.json.
+
+Skrypt nie wysyla wiadomosci, nie patchuje gry i nie uruchamia AI.
+OCR jest skonfigurowany do pracy bez CUDA. Sam BlueStacks moze uzywac GPU.
+
+NAPRAWIONY BLAD:
+- W poprzednim PEva_OCR.cmd nawias zamykajacy w komunikacie echo w bloku IF
+  powodowal blad Windows: ... was unexpected at this time.
+- Nowy starter nie uzywa wielowierszowych blokow IF i korzysta z goto.
+
+Jesli pojawi sie kolejny blad, wyslij pelny tekst konsoli.
+Raport i zrzuty ekranu moga zawierac prywatne wiadomosci.
+
+PEva - CZUWANIE PRYWATNEGO CZATU
+--------------------------------
+Ta instrukcja dotyczy osobnego, technicznego okna samych Oczu. Na co dzień
+używaj PEva.cmd: otwiera ono nową całą PEvę (model + Oczy + SAFE) w jednym
+oknie. Poniższy tryb zostaje do izolowanych testów Oczu.
+--------------------------------
+1. Uruchom BlueStacks i Last Z.
+2. Otwórz projekt w swoim edytorze Python i uruchom peva_eyes_ui.py. Otworzy się zwykłe małe okno PEva.
+3. Kliknij Włącz czuwanie. PEva sprawdza obraz raz na sekundę.
+4. Gdy zobaczy nową wiadomość, robi pojedynczy lokalny odczyt OCR na Androidzie.
+5. Kliknij Zatrzymaj albo po prostu zamknij okno.
+
+Czuwanie nie uruchamia modelu AI, nie pisze i nie wysyla wiadomosci. Nie ma
+tez stalej uslugi na Androidzie: po pojedynczym odczycie pomocnik sam sie
+zamyka. Gdy na liscie jest wiecej niz jedna oznaczona rozmowa, PEva niczego
+nie wybierze automatycznie. Kod okna i całe czuwanie są w zwykłym Pythonie:
+peva_eyes_ui.py. PEva_Eyes.cmd zostawilem wyłącznie jako stary, awaryjny
+starter techniczny.
+
+CZYTANIE PACZEK
+----------------
+- Zwykła wiadomość: PEva odczytuje jeden ekran i przez 1 sekundę czeka na
+  kolejne wiadomości od tej osoby.
+- Długi bąbelek urwany przy górnej krawędzi: PEva może wykonać maksymalnie
+  dwa krótkie przewinięcia, aby odczytać dalszy fragment, po czym wraca na dół.
+- Seria lub spam: PEva łączy wiadomości w jedną paczkę maksymalnie przez
+  4 sekundy. Nie przygotowuje wielu odpowiedzi do kolejnych linijek.
+- Obrazek, naklejka lub element bez pewnego tekstu: PEva oznacza go jako
+  nieczytelny i nie zgaduje jego zawartości.
+- Popup albo nieznany ekran: PEva nie przewija i nie klika dalej.
+
+Tekst paczki istnieje tylko chwilowo w pamięci potrzebnej do kolejnego etapu.
+Nie jest wyświetlany w oknie, zapisywany do pliku ani wysyłany do modelu.

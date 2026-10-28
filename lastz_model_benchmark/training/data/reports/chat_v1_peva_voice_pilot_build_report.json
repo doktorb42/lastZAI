@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "stage": "build_peva_voice_pilot",
+  "rows": 308,
+  "families": 44,
+  "variants_per_family": 7,
+  "category_distribution": {
+    "alliance_coordination": 28,
+    "casual_conversation": 28,
+    "casual_greeting": 28,
+    "clarification": 28,
+    "disagreement_conflict": 28,
+    "event_discussion": 28,
+    "humor_teasing": 28,
+    "scheduling": 28,
+    "short_reaction": 28,
+    "strategy_game": 28,
+    "unknown_information": 28
+  },
+  "length_band_distribution": {
+    "medium": 10,
+    "micro_social": 31,
+    "occasional_long": 1,
+    "short": 12,
+    "very_short": 254
+  },
+  "provenance": "original author-curated PEva examples; no private capture or third-party dialogue text",
+  "approval_note": "Approved under the user's request for a controlled pilot; automated strict validation is not represented as human social evaluation.",
+  "runtime_model_modified": false,
+  "network_access_used": false,
+  "output": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\generated\\chat_v1_peva_voice_pilot_source.jsonl",
+  "sha256": "478f911a34f3a978591005e3d545608f75d21cc9ef03fd9ee7ddbda5b09f921a"
+}

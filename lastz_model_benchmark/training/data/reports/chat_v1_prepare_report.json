@@ -1,0 +1,43 @@
+{
+  "accepted_rows": 308,
+  "append_mode": false,
+  "approval_state_distribution": {
+    "approved": 308
+  },
+  "checks": {
+    "canonical_task_chat_v2_validated": true,
+    "no_model_or_game_generation": true,
+    "no_processed_training_data_written": true
+  },
+  "created_at": "2026-10-27T03:51:06+00:00",
+  "critical_errors": [],
+  "existing_queue_rows": 0,
+  "input": {
+    "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\generated\\chat_v1_peva_voice_pilot_source.jsonl",
+    "sha256": "478f911a34f3a978591005e3d545608f75d21cc9ef03fd9ee7ddbda5b09f921a"
+  },
+  "input_rows": 308,
+  "outputs": {
+    "rejected": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\rejected\\chat_v1_prepare_rejected.jsonl",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source_queue": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\raw\\chat_v1_source_queue.jsonl",
+      "rows": 308,
+      "sha256": "c0c7d9864be2cec920c9d7b6bacfde0fcd108ee9e368525edcfa8c07e2165b71"
+    }
+  },
+  "passed": true,
+  "rejected_rows": 0,
+  "rejection_reasons": {},
+  "schema_version": 1,
+  "source_formats": {
+    "source-record": 308
+  },
+  "source_type_distribution": {
+    "manually_authored": 308
+  },
+  "stage": "prepare_chat_v1_dataset"
+}

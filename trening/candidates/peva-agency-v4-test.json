@@ -1,0 +1,9 @@
+{
+  "status": "test_only_not_runtime",
+  "name": "PEva Agency Pilot V4",
+  "gguf": "data/training/exports/peva-agency-pilot-v4-test/peva-agency-pilot-v4-test-Q6_K.gguf",
+  "adapter": "data/training/runs/peva-qwen2.5-7b-agency-pilot-v4/adapter",
+  "report": "docs/PEVA_AGENCY_PILOT_V4_REPORT.md",
+  "reason_not_promoted": "W odizolowanym teście 3/3 zwykłych sytuacji społecznych otrzymały IGNORE.",
+  "automatic_game_actions": false
+}

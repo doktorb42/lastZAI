@@ -1,0 +1,205 @@
+{
+  "accepted_rows": 308,
+  "approval_state_distribution": {
+    "approved": 308
+  },
+  "approved_rows_input": 308,
+  "category_distribution": {
+    "alliance_coordination": 28,
+    "casual_conversation": 28,
+    "casual_greeting": 28,
+    "clarification": 28,
+    "disagreement_conflict": 28,
+    "event_discussion": 28,
+    "humor_teasing": 28,
+    "scheduling": 28,
+    "short_reaction": 28,
+    "strategy_game": 28,
+    "unknown_information": 28
+  },
+  "checks": {
+    "conflicting_target_scan": true,
+    "duplicate_prompt_target_scan": true,
+    "exact_task_chat_v2_schema": true,
+    "explicit_human_approval_only": true,
+    "no_rejected_input_rows": true,
+    "player_ready_reply_gate": true,
+    "runtime_identifier_leak_scan": true,
+    "straight_apostrophe_policy": true
+  },
+  "created_at": "2026-10-27T03:51:13+00:00",
+  "critical_errors": [],
+  "duplicate_or_conflict_failures": {},
+  "explicit_valid_variant_groups": {},
+  "generic_assistant_style_failures": {},
+  "input": {
+    "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\raw\\chat_v1_source_queue.jsonl",
+    "sha256": "c0c7d9864be2cec920c9d7b6bacfde0fcd108ee9e368525edcfa8c07e2165b71"
+  },
+  "input_rows": 308,
+  "leakage_failures": {},
+  "length_band_distribution": {
+    "medium": 10,
+    "micro_social": 31,
+    "occasional_long": 1,
+    "short": 12,
+    "very_short": 254
+  },
+  "outputs": {
+    "accepted": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reviewed\\chat_v1_validated.jsonl",
+      "rows": 308,
+      "sha256": "c0c7d9864be2cec920c9d7b6bacfde0fcd108ee9e368525edcfa8c07e2165b71"
+    },
+    "rejected": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\rejected\\chat_v1_validation_rejected.jsonl",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "passed": true,
+  "player_group_distribution": {
+    "pgrp_voice_001": 7,
+    "pgrp_voice_002": 7,
+    "pgrp_voice_003": 7,
+    "pgrp_voice_004": 7,
+    "pgrp_voice_005": 7,
+    "pgrp_voice_006": 7,
+    "pgrp_voice_007": 7,
+    "pgrp_voice_008": 7,
+    "pgrp_voice_009": 7,
+    "pgrp_voice_010": 7,
+    "pgrp_voice_011": 7,
+    "pgrp_voice_012": 7,
+    "pgrp_voice_013": 7,
+    "pgrp_voice_014": 7,
+    "pgrp_voice_015": 7,
+    "pgrp_voice_016": 7,
+    "pgrp_voice_017": 7,
+    "pgrp_voice_018": 7,
+    "pgrp_voice_019": 7,
+    "pgrp_voice_020": 7,
+    "pgrp_voice_021": 7,
+    "pgrp_voice_022": 7,
+    "pgrp_voice_023": 7,
+    "pgrp_voice_024": 7,
+    "pgrp_voice_025": 7,
+    "pgrp_voice_026": 7,
+    "pgrp_voice_027": 7,
+    "pgrp_voice_028": 7,
+    "pgrp_voice_029": 7,
+    "pgrp_voice_030": 7,
+    "pgrp_voice_031": 7,
+    "pgrp_voice_032": 7,
+    "pgrp_voice_033": 7,
+    "pgrp_voice_034": 7,
+    "pgrp_voice_035": 7,
+    "pgrp_voice_036": 7,
+    "pgrp_voice_037": 7,
+    "pgrp_voice_038": 7,
+    "pgrp_voice_039": 7,
+    "pgrp_voice_040": 7,
+    "pgrp_voice_041": 7,
+    "pgrp_voice_042": 7,
+    "pgrp_voice_043": 7,
+    "pgrp_voice_044": 7
+  },
+  "quality_failure_categories": {},
+  "rejected_rows": 0,
+  "rejection_reasons": {},
+  "reply_length_characters": {
+    "bands": {
+      "0_80": 288,
+      "181_400": 13,
+      "401_950": 1,
+      "81_180": 6
+    },
+    "count": 308,
+    "max": 440,
+    "mean": 52.19,
+    "min": 5,
+    "p50": 45.0,
+    "p95": 85.3
+  },
+  "reply_length_words": {
+    "configured_bands": {
+      "medium": {
+        "max": 70,
+        "min": 35
+      },
+      "micro_social": {
+        "max": 4,
+        "min": 1
+      },
+      "occasional_long": {
+        "max": 120,
+        "min": 70
+      },
+      "short": {
+        "max": 35,
+        "min": 15
+      },
+      "very_short": {
+        "max": 20,
+        "min": 5
+      }
+    },
+    "count": 308,
+    "max": 83,
+    "mean": 10.2,
+    "min": 1,
+    "p50": 9.0,
+    "p95": 17.65
+  },
+  "schema_version": 1,
+  "source_type_distribution": {
+    "manually_authored": 308
+  },
+  "stage": "validate_chat_v1_dataset",
+  "thread_group_distribution": {
+    "tgrp_voice_001": 7,
+    "tgrp_voice_002": 7,
+    "tgrp_voice_003": 7,
+    "tgrp_voice_004": 7,
+    "tgrp_voice_005": 7,
+    "tgrp_voice_006": 7,
+    "tgrp_voice_007": 7,
+    "tgrp_voice_008": 7,
+    "tgrp_voice_009": 7,
+    "tgrp_voice_010": 7,
+    "tgrp_voice_011": 7,
+    "tgrp_voice_012": 7,
+    "tgrp_voice_013": 7,
+    "tgrp_voice_014": 7,
+    "tgrp_voice_015": 7,
+    "tgrp_voice_016": 7,
+    "tgrp_voice_017": 7,
+    "tgrp_voice_018": 7,
+    "tgrp_voice_019": 7,
+    "tgrp_voice_020": 7,
+    "tgrp_voice_021": 7,
+    "tgrp_voice_022": 7,
+    "tgrp_voice_023": 7,
+    "tgrp_voice_024": 7,
+    "tgrp_voice_025": 7,
+    "tgrp_voice_026": 7,
+    "tgrp_voice_027": 7,
+    "tgrp_voice_028": 7,
+    "tgrp_voice_029": 7,
+    "tgrp_voice_030": 7,
+    "tgrp_voice_031": 7,
+    "tgrp_voice_032": 7,
+    "tgrp_voice_033": 7,
+    "tgrp_voice_034": 7,
+    "tgrp_voice_035": 7,
+    "tgrp_voice_036": 7,
+    "tgrp_voice_037": 7,
+    "tgrp_voice_038": 7,
+    "tgrp_voice_039": 7,
+    "tgrp_voice_040": 7,
+    "tgrp_voice_041": 7,
+    "tgrp_voice_042": 7,
+    "tgrp_voice_043": 7,
+    "tgrp_voice_044": 7
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "checks": {
+    "dedup_passed": true,
+    "leak_scan_passed": true,
+    "no_critical_errors": true,
+    "policy_valid": true,
+    "processed_prompt_completion_shape_valid": true,
+    "production_capabilities_valid": true,
+    "scenario_family_disjoint": true,
+    "schema_valid": true,
+    "template_id_disjoint": true
+  },
+  "counts": {
+    "eligible": 2034,
+    "input": 2034,
+    "rejected": 0,
+    "train": 1822,
+    "validation": 212
+  },
+  "created_at": "2026-10-09T23:55:58+00:00",
+  "critical_errors": [],
+  "input": {
+    "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\action_v1_leak_checked.jsonl",
+    "sha256": "c237ef6bb93aafe517c742003dded14bcd3ff4e395a93b400c22e47c09a791e6"
+  },
+  "outputs": {
+    "train": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\action_v1_train.jsonl",
+      "rows": 1822,
+      "sha256": "9698047589066e583addf84c7eb5d32e690e9216d72ea5ee2b46b5be6c4e23c7"
+    },
+    "validation": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\action_v1_validation.jsonl",
+      "rows": 212,
+      "sha256": "58d497ab0d8212b852619c369020d76d9019b27c176a5ca38e0dfc298b1209db"
+    }
+  },
+  "passed": true,
+  "schema_version": 1,
+  "sha256": {
+    "train": "9698047589066e583addf84c7eb5d32e690e9216d72ea5ee2b46b5be6c4e23c7",
+    "validation": "58d497ab0d8212b852619c369020d76d9019b27c176a5ca38e0dfc298b1209db"
+  },
+  "split": {
+    "component_count": 35,
+    "family_overlap": [],
+    "group_key": "connected_component(scenario_family,template_id)",
+    "max_ratio_deviation": 0.05,
+    "template_overlap": [],
+    "validation_ratio_actual": 0.10422812192723697,
+    "validation_ratio_target": 0.1
+  },
+  "stage": "split_dataset",
+  "upstream_reports": {
+    "dedup_report": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reports\\action_v1_dedup_report.json",
+    "leak_report": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reports\\action_v1_benchmark_leakage_report.json",
+    "validation_report": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reports\\action_v1_validation_report.json"
+  }
+}

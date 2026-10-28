@@ -1,0 +1,254 @@
+SUPERSEDED — FINAL SUCCESS
+==========================
+
+The preliminary conclusion below is historical and no longer reflects the
+verified result. The active runtime route was proven, an actual PM from
+OG doktorb was captured as raw push.chat.room JSON, and the final standard
+updater was built, installed and restart-tested successfully.
+
+Authoritative final report:
+  D:\projekty\lastZAI\CODEX_FINAL_WORKING_SOLUTION.txt
+
+Last Z Chat Patch Report — 2026-10-17
+=======================================
+
+Outcome
+-------
+The ChatNetManagerBase patch was structurally correct, survived a guarded game
+startup, and the game reached the normal base and then the Chat UI.  It is not,
+however, the implementation exercised by the active ChatManager2 route.  No
+remote test message was sent and no old l_slg_all bundle was repatched during
+this pass.
+
+Stock target extraction
+-----------------------
+APK source:
+  apk_scan/split_install_time_pack.apk
+  assets/AssetBundles/slgengine_main_luatxt_chat_all_0290534658a2bf1172fe1b39063663e2.bundle
+
+Extraction verification:
+  size:   248957
+  CRC32:  2231317949 (0x84ff35bd)
+  SHA256: 9bf376fa8937767befc06cd0fc9c193583ef86b4920265f41ea70554fd92ea7e
+  zip compression: stored (the existing root-level bundle exactly matched the APK entry)
+
+Bundle format: UnityRaw + UnityFS, with compressed LZ4HC block-info flags.
+TextAsset count: 155.  The complete per-TextAsset report is:
+  chatbase_new/textasset_report.txt
+
+Target discovered
+-----------------
+Name:    ChatNetManagerBase
+path_id: 6408915687859991957
+stock raw (Last Z):
+  size:   16027
+  SHA256: 5fa0f70b03f025ce75620b3a48456c975041e23f7e719ece3f3e58b1f4573d19
+  header: 1b 4c 75 61 03 54 00 19 93 0d 0a 1a 0a 04 08 08 78 56 00 00
+  ChatPrint=14, print=0, __onCallback=2, [callback] marker=1,
+  onMessage=7, __onMessage=5, onMessageTable=4, __onMessageTable=3.
+
+Raw extraction:
+  chatbase_new/ChatNetManagerBase_6408915687859991957.lastz.luac
+
+Normalized stock extraction:
+  chatbase_new/ChatNetManagerBase_6408915687859991957.stock.luac
+  size:   16026
+  SHA256: 72c43bad534d4d67c5b7a1ea8535571e8925afc8a9dbf48fe8c1fc76211d3298
+  header: 1b 4c 75 61 54 00 19 93 0d 0a 1a 0a 04 08 08 78 56 00 00
+
+Normalization was deliberately limited to removing the Last Z marker byte 03
+at offset 0x4.  The 93 byte and every later header byte were preserved.  Lua
+5.4 `luac -p` accepted the normalized file.
+
+Disassembly and patch decision
+------------------------------
+Disassembly:
+  chatbase_new/ChatNetManagerBase.disassembly.txt
+  chatbase_new/ChatNetManagerBase.payload.disassembly.txt
+
+`__onCallback` is ChatNetManagerBase.lua lines 140-155 and has four
+parameters / locals:
+  self, e, p, no
+
+Stock callback instructions:
+  1  GETTABUP 4 0 0   ; _ENV "ChatPrint"
+  2  LOADK    5 1     ; "[callback] (%d) - %s"
+  3  TESTSET  6 3 1
+  4  JMP      1
+  5  LOADI    6 0
+  6  MOVE     7 1     ; e
+  7  CALL     4 4 1
+
+`p` is parameter register 2 and is passed to the message handlers afterwards.
+Therefore the historical payload patch retains the correct semantics here.
+
+Applied changes to the normalized chunk:
+  1. Structurally replaced the 14 valid Lua short-string constants
+     ChatPrint -> print.  Each replacement was a parsed short-string record,
+     never a blind raw-file replacement.  Size: 16026 -> 15970 (-56 bytes).
+  2. In the unique callback-local window before the marker, changed bytecode
+     instruction at 0x0d9d:
+       80 03 01 00  (MOVE 7 1)
+       80 03 02 00  (MOVE 7 2)
+     The one changed operand byte is at 0x0d9f.
+
+Patched normalized Lua:
+  chatbase_new/ChatNetManagerBase_6408915687859991957.payload.stock.luac
+  size:   15970
+  SHA256: 3728fddf88dcc6623728b0291b97c9c02e6df23f04d9c632e2a2f2745939bc81
+
+Reinserted Last Z Lua replacement:
+  size:   15971
+  SHA256: 6ca41a432573aecfbd483fc6bf8ea03a485460fd5913ab6930f755ae24a27484
+
+The patched disassembly confirms `print` and `MOVE 7 2` in callback instruction
+6.  It also confirms `print("ChatNetManager:Init %s", ...)` in Init.
+
+Repacked bundle
+---------------
+Output:
+  slgengine_main_luatxt_chat_all_0290534658a2bf1172fe1b39063663e2.patched.original.bundle
+
+Repack used env.file.save(packer="original") and preserved the UnityRaw wrapper.
+It was reopened through UnityPy after writing.  The same exact path_id was
+found and its extracted bytes exactly matched the intended Last Z replacement.
+
+  stock:   size=248957  CRC32=2231317949
+           SHA256=9bf376fa8937767befc06cd0fc9c193583ef86b4920265f41ea70554fd92ea7e
+  patched: size=250050  CRC32=2174951592
+           SHA256=b67910411150a495589eb356fcd8fb2c0214980540651c1c621f761b7c2c9c4f
+
+The +1093 byte change is 0.44%, not an unexpected uncompressed multi-megabyte
+output.  UnityFS still reports compressed LZ4HC flags.
+
+Manifest and version
+--------------------
+Stock manifest: gameres.after_start
+
+The patched manifest changes exactly one line and exactly fields [2] and [3]:
+  stock:
+  1205,slgengine_main_luatxt_chat_all_0290534658a2bf1172fe1b39063663e2.bundle,2231317949,248957,43243-43397,0,0,0
+  patched:
+  1205,slgengine_main_luatxt_chat_all_0290534658a2bf1172fe1b39063663e2.bundle,2174951592,250050,43243-43397,0,0,0
+
+Patched manifest:
+  gameres.chatbase.patched
+  size:   4881841
+  CRC32:  1819402274
+  SHA256: bb032a294cdcc52624055eb443db0a610807c9091feebaffd99c1dca4b7cc3fb
+
+Patched gameres.version (no trailing newline):
+  gameres.version.chatbase.patched
+  content: 2142,4881841,1819402274
+  SHA256:  a5c032a3bb55569815a5c781ccfb9228a1c906bcf4c44fb7a76f7439c3232e6e
+
+Guard and device verification
+-----------------------------
+New guard sources:
+  peva_chatbase_guard.sh
+  test_peva_chatbase_guard.ps1
+
+The PowerShell guard first makes a non-destructive device backup in:
+  /sdcard/Android/data/com.readygo.barrel.gp/cache/Download/peva_stock_before_chatbase_20261017_022542
+
+It then force-stops the game, stages the patched bundle and manifest, seeds the
+three required gameres/version locations, validates `sh -n` on the device,
+starts the guard before the activity, and performs final SHA/size/version
+checks.  Its first execution stopped before staging because the backup command
+had a quote error; that command was corrected, parsed with the PowerShell
+parser, and the successful execution then completed staging and device-side
+`sh -n` validation.
+
+The persistent guard observed the installed state for more than the requested
+40-60 second window without producing any swap event.  It ended naturally.
+The guard iteration count was then reduced from 1750 to 1500 for future runs
+because this device executes the many shell checks slightly slower than the
+nominal 0.03-second sleep suggests.  The updated local and pushed guard have:
+  SHA256: d46e9838eae52593be0cb34b1017ffd0aa545048c0e5b39a1a525bb4127f8b06
+  device `sh -n`: PASS
+
+Final active device state:
+  bundle size: 250050
+  bundle SHA256: b67910411150a495589eb356fcd8fb2c0214980540651c1c621f761b7c2c9c4f
+  gameres SHA256: bb032a294cdcc52624055eb443db0a610807c9091feebaffd99c1dca4b7cc3fb
+  files/AssetBundles/gameres.version: 2142,4881841,1819402274
+  cache/Download/gameres.version:     2142,4881841,1819402274
+  manifest target entry: patched entry above
+
+The app remains foregrounded in UnityPlayerActivityCustom.  Screenshot evidence:
+  chatbase_new/device_after_start.png       (normal base reached)
+  chatbase_new/device_chat_open.png         (chat UI reached)
+
+Runtime result and evidence-led fallback
+-----------------------------------------
+Result for the patched target:
+  ChatNetManager:Init: NOT observed
+  [callback]: NOT observed
+  LuaException / Lua Error / AssetBundle / CRC error: NOT observed in the
+  scoped post-start logcat search.
+
+Opening the visible Chat UI did emit:
+  10-17 02:25:51.771 I Unity: [LUA]ChatManager2:Init
+
+That is decisive runtime evidence.  The large project asset in l_slg_all is:
+  ChatManager2, path_id=-7272158966702434296,
+  source Slg/Chat/ChatManager2.lua,
+  SHA256=2b12e66f059f0b0cf1bfd95de010765de7336afc1a439a5c97811bcac91812bc.
+Its `__init` explicitly requires `Slg.Chat.Controller.ChatNetManager`; its
+`Init` calls self.Net:Init and prints `ChatManager2:Init`.  That is the log
+that appeared after opening Chat.
+
+This large project ChatNetManager is the direct implementation in l_slg_all:
+  name=ChatNetManager, path_id=2011418819829741441, size=15683,
+  SHA256=688e3946e8989044c199db8c0a714bfe8ea157b1b7cc9025cc67bd7d84e942a6.
+It is not the small Chat_SLG wrapper.
+
+For completeness, all 21 current Lua bundles in split_install_time_pack.apk
+were inspected.  There is only one ChatNetManagerBase TextAsset, in the new
+slgengine_main_luatxt_chat_all bundle.  ChatManager2Base in that bundle has:
+  path_id=4020882321186886159, size=47661,
+  SHA256=6e9be178a782ae0dc0a2053326ae1a85e98ae383067b1b781a221d0f8bc9a174,
+and it requires SlgEngine.Chat.Controller.ChatNetManagerBase in CreateNetManager.
+The small Chat_SLG wrapper also requires the base, but neither is the variant
+proved active by the actual `ChatManager2:Init` log.
+
+Thus the new bundle, manifest and guard are all technically valid, but this
+canary is not a live route for the currently selected Chat manager.  Per the
+instruction not to return immediately to l_slg_all, it was not modified in
+this pass.  The old negative l_slg_all canary test was not conclusive unless
+the Chat UI had been opened; this run showed ChatManager2 initializes lazily
+when that UI is opened.
+
+Files created or changed
+------------------------
+Created:
+  normalize_lastz_luac.py
+  inspect_lastz_lua_bundle.py
+  chatbase_new/ (assets, reports, both disassemblies and screenshots)
+  chatbase_dependency/ (ChatManager2Base extraction and disassembly)
+  chatmanager2_project/ (both ChatManager2 extraction and disassemblies)
+  slgengine_main_luatxt_chat_all_0290534658a2bf1172fe1b39063663e2.patched.original.bundle
+  gameres.chatbase.patched
+  gameres.version.chatbase.patched
+  peva_chatbase_guard.sh
+  test_peva_chatbase_guard.ps1
+  CODEX_CHAT_PATCH_REPORT.txt
+
+Changed:
+  patch_gameres_for_bundle.py (optional verified gameres.version output)
+  inspect_lastz_lua_bundle.py (repeatable named TextAsset exports)
+
+No stock/original local bundle or manifest was overwritten.  No remote message
+was sent.  The currently running device still has the ChatNetManagerBase test
+bundle/manifest installed, which is known to be benign for normal base and Chat
+UI loading but is not the active interception route.
+
+What to do next
+---------------
+Do not send REMOTE_CODEX_701 for this ChatNetManagerBase build: its canary did
+not run.  Do not restart the game solely for this result; it is left open at
+the Chat UI.  The evidence points to a follow-up, UI-open canary test of the
+direct l_slg_all ChatNetManager (path_id 2011418819829741441), using a fresh
+manifest and the same verified guard process.  That next test should be a
+separate deliberate step, rather than treating the earlier no-Init result as
+proof that the direct implementation is inactive.

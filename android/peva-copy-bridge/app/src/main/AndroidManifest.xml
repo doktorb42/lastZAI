@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:allowBackup="false"
+        android:label="PEva Helper"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".ClipboardBridgeService"
+            android:exported="false" />
+
+        <!-- Started only after the user approves Android's screen-capture
+             prompt. It captures one frame, runs local OCR, then stops. -->
+        <service
+            android:name=".ScreenOcrService"
+            android:exported="false" />
+
+        <!-- Readable only by this app and the local ADB shell. It is not a
+             network endpoint and normal Android apps receive SecurityException. -->
+        <provider
+            android:name=".BridgeProvider"
+            android:authorities="com.peva.copybridge.local"
+            android:exported="true"
+            android:grantUriPermissions="false" />
+
+        <!--
+          The desktop runtime can arm a short capture window through ADB without
+          bringing this activity to the foreground. The receiver accepts a
+          per-install secret generated in app-private storage; it cannot read
+          messages or start a permanent listener.
+        -->
+        <receiver
+            android:name=".BridgeCommandReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.peva.copybridge.ARM" />
+                <action android:name="com.peva.copybridge.STOP" />
+                <action android:name="com.peva.copybridge.OCR_ADB_SCREENSHOT" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "action_v1_frozen_qualification": true,
+    "all_required_checks": true,
+    "approved_pilot_minimum": true,
+    "hash_lineage_valid": true,
+    "leakage_failure_counter_zero": true,
+    "leakage_report_passed": true,
+    "nonempty_train_validation_test": true,
+    "quality_failure_counters_zero": true,
+    "required_categories_covered": true,
+    "required_length_bands_covered": true,
+    "split_report_passed": true,
+    "validation_report_passed": true
+  },
+  "config_path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\configs\\peva_voice_social_repair.yaml",
+  "counts": {
+    "approved_valid_rows": 330,
+    "generic_assistant_style_failures": {},
+    "leakage_failures": {},
+    "missing_categories": [],
+    "missing_length_bands": [],
+    "quality_failure_categories": {},
+    "required_minimum": 300,
+    "split": {
+      "test": 33,
+      "train": 264,
+      "validation": 33
+    },
+    "target_pilot_rows": 330
+  },
+  "created_at": "2026-10-27T14:31:58+00:00",
+  "dataset_paths": {
+    "test": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\peva_voice_social_repair_test.jsonl",
+    "train": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\peva_voice_social_repair_train.jsonl",
+    "validation": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\peva_voice_social_repair_validation.jsonl"
+  },
+  "errors": [],
+  "hashes": {
+    "test": "7be41911e947488a181dedc34fb375a252180f1beae3cb3ad2c40b5ccc5778c1",
+    "train": "194ad0122dd9ba0b22526d6906f1eb91c4f74322619368d11405031ff0dab2b5",
+    "validation": "563a11c100400b72e1795b101f38c8dca7dbed145c905848ee97af3a8ea501eb"
+  },
+  "ready": true,
+  "reports": {
+    "action_v1_comparison": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\outputs\\reports\\action_v1_full_holdout_comparison.json",
+    "leakage": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reports\\peva_voice_social_repair_benchmark_leakage_report.json",
+    "split": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\peva_voice_social_repair_quality_gate.json",
+    "validation": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reports\\peva_voice_social_repair_validation_report.json"
+  },
+  "schema_version": 1,
+  "stage": "chat_v1_readiness",
+  "status": "CHAT V1 TRAINING READY"
+}

@@ -1,0 +1,8 @@
+{
+  "slot": "current",
+  "status": "runtime_reference",
+  "name": "Qwen2.5-3B-Instruct base Q6_K",
+  "path": "lastz_model_benchmark/training/outputs/gguf/base-q6-v2/qwen2.5-3b-instruct-base-Q6_K.gguf",
+  "selected_by": "config/models.json",
+  "notes": "To jest aktualne ustawienie zwykłego startu PEva. Nie jest to automatyczny agent gry."
+}

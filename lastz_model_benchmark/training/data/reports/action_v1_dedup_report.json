@@ -1,0 +1,35 @@
+{
+  "accepted_rows": 2335,
+  "checks": {
+    "accepted_rows_remaining": true,
+    "exact_duplicate_scan_completed": true,
+    "near_duplicate_scan_completed": true
+  },
+  "created_at": "2026-10-09T23:55:52+00:00",
+  "critical_errors": [],
+  "input": {
+    "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reviewed\\action_v1_validated.jsonl",
+    "rows": 2400,
+    "sha256": "ecb9df05ad61c60600a9ec5cc0f37804ba2d167e54584ea174ffd45e14bffc97"
+  },
+  "near_threshold": 0.999,
+  "outputs": {
+    "accepted": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\action_v1_deduplicated.jsonl",
+      "rows": 2335,
+      "sha256": "e5fe143c6b4253484f35d49ed9abd8632b3e5702a79af5dd66a6537780fd1010"
+    },
+    "rejected": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\rejected\\action_v1_dedup_rejected.jsonl",
+      "rows": 65,
+      "sha256": "c9b76e82ac2a008652fa0652f5d6cbc4ce58859639b7dce0f992ebdcbe2ee405"
+    }
+  },
+  "passed": true,
+  "rejected_rows": 65,
+  "rejection_reasons": {
+    "near duplicate action prompt": 65
+  },
+  "schema_version": 1,
+  "stage": "deduplicate_dataset"
+}

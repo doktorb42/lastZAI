@@ -1,0 +1,43 @@
+{
+  "accepted_rows": 330,
+  "append_mode": false,
+  "approval_state_distribution": {
+    "approved": 330
+  },
+  "checks": {
+    "canonical_task_chat_v2_validated": true,
+    "no_model_or_game_generation": true,
+    "no_processed_training_data_written": true
+  },
+  "created_at": "2026-10-27T14:31:44+00:00",
+  "critical_errors": [],
+  "existing_queue_rows": 0,
+  "input": {
+    "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\generated\\peva_voice_social_repair_source.jsonl",
+    "sha256": "2e1c39db496a761aa748525b3512918e05ae3382777b0e6a6b90afb20ee67642"
+  },
+  "input_rows": 330,
+  "outputs": {
+    "rejected": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\rejected\\peva_voice_social_repair_prepare_rejected.jsonl",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source_queue": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\raw\\peva_voice_social_repair_queue.jsonl",
+      "rows": 330,
+      "sha256": "222cbf34a50768d971d758ef751ec2f0b3f680ca68fb77bb99406e958e7afaef"
+    }
+  },
+  "passed": true,
+  "rejected_rows": 0,
+  "rejection_reasons": {},
+  "schema_version": 1,
+  "source_formats": {
+    "source-record": 330
+  },
+  "source_type_distribution": {
+    "synthetic_candidate": 330
+  },
+  "stage": "prepare_chat_v1_dataset"
+}

@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.application'
+}
+
+def pevaLocalProperties = new Properties()
+def pevaLocalPropertiesFile = rootProject.file('local.properties')
+if (pevaLocalPropertiesFile.isFile()) {
+    pevaLocalPropertiesFile.withInputStream { pevaLocalProperties.load(it) }
+}
+def pevaDebugKeystore = pevaLocalProperties.getProperty('peva.debug.keystore', '').trim()
+
+android {
+    namespace 'com.peva.copybridge'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.peva.copybridge'
+        minSdk 26
+        targetSdk 28
+        versionCode 12
+        versionName '1.0-peva-helper-header-quarantine'
+    }
+
+    // The local property points to the already used PEva Helper debug key.
+    // Keeping it outside source files lets the emulator update in place
+    // without deleting the Helper's local pairing or asking for screen access
+    // again.  A clone without this local property simply uses Android's normal
+    // debug signing setup.
+    if (pevaDebugKeystore) {
+        signingConfigs {
+            debug {
+                storeFile file(pevaDebugKeystore)
+                storePassword 'android'
+                keyAlias 'androiddebugkey'
+                keyPassword 'android'
+            }
+        }
+    }
+}
+
+dependencies {
+    // Bundled Latin OCR: available immediately and runs locally, so a screen
+    // read never waits for a Google Play Services model download.
+    implementation 'com.google.mlkit:text-recognition:16.0.1'
+}

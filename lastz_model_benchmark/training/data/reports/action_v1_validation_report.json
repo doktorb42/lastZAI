@@ -1,0 +1,45 @@
+{
+  "accepted_rows": 2400,
+  "checks": {
+    "completion_is_canonical_json": true,
+    "coordinate_free": true,
+    "policy_valid": true,
+    "production_capabilities_valid": true,
+    "schema_valid": true
+  },
+  "created_at": "2026-10-09T23:55:46+00:00",
+  "critical_errors": [],
+  "input": {
+    "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\generated\\action_v1_raw.jsonl",
+    "sha256": "ecb9df05ad61c60600a9ec5cc0f37804ba2d167e54584ea174ffd45e14bffc97"
+  },
+  "input_rows": 2400,
+  "outputs": {
+    "accepted": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reviewed\\action_v1_validated.jsonl",
+      "rows": 2400,
+      "sha256": "ecb9df05ad61c60600a9ec5cc0f37804ba2d167e54584ea174ffd45e14bffc97"
+    },
+    "rejected": {
+      "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\rejected\\action_v1_validation_rejected.jsonl",
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "passed": true,
+  "rejected_rows": 0,
+  "rejection_reasons": {},
+  "schema_version": 1,
+  "stage": "validate_action_dataset",
+  "suite_counts_accepted": {
+    "adversarial": 480,
+    "production": 1920
+  },
+  "target_counts_accepted": {
+    "{\"action\":\"open_chat\"}": 384,
+    "{\"action\":\"open_private_chat\"}": 288,
+    "{\"action\":\"open_private_person\",\"index\":0}": 288,
+    "{\"action\":\"reply_private\"}": 264,
+    "{\"action\":\"wait\"}": 1176
+  }
+}

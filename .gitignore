@@ -1,36 +1,53 @@
-# Wirtualne srodowiska
+# Srodowiska wirtualne
 .venv*/
 venv*/
 env/
+.peva_ocr_env/
 node_modules/
 __pycache__/
 *.pyc
 
-# Build
-bin/
-archive/
-obj/
-data/
-dist/
-lastz_model_benchmark/training/models/
-build/
-.next/
-patch/
-target/
-
-# Lokalne
+# Edytory
 .vscode/
-.peva_ocr_env/
-android/
-apk/
-trening/
 
-# Sekrety
+# Artefakty budowania (dla Androida tez)
+build/
+dist/
+obj/
+bin/
+target/
+.next/
+.gradle/
+*.apk
+local.properties
+
+# Duze katalogi lokalne (zakotwiczone w korzeniu repo)
+/data/
+/apk/
+/patch/
+/cache/
+/archive/snapshots/
+/lastz_model_benchmark/models/
+/lastz_model_benchmark/runtime/
+/lastz_model_benchmark/.codex/
+/lastz_model_benchmark/training/models/
+/lastz_model_benchmark/training/outputs/
+/lastz_model_benchmark/training/unsloth_compiled_cache/
+/lastz_model_benchmark/benchmarks/reports/
+
+# Cudze pliki i potencjalnie prywatne dane
+/tools/il2cppdumper/
+/docs/evidence/
+/benchmarks/peva_private*
+
+# Sekrety i klucze
 .env
 .env.*
 *.pem
+*.jks
+*.keystore
 
-# Modele i duze pliki
+# Modele, archiwa i binaria
 *.gguf
 *.safetensors
 *.bin
@@ -41,29 +58,20 @@ trening/
 *.h5
 *.npy
 *.parquet
-
-# Logi, wyniki
-*.log
-checkpoints/
-outputs/
-runs/
-wandb/
-# Wygenerowane i cudze pliki
-cache/
-tools/il2cppdumper/
-# Potencjalnie prywatne dane
-docs/evidence/
-benchmarks/peva_private*
-
-# lastz_model_benchmark: bez modeli i binariow
-lastz_model_benchmark/models/
-lastz_model_benchmark/runtime/
-lastz_model_benchmark/.codex/
 *.zip
 *.exe
 *.dll
-# Mozliwe dane prywatne
+
+# Dane i logi
 *.jsonl
 *.db
 *.sqlite
 *.sqlite3
+*.log
+checkpoints/
+runs/
+wandb/
+/archive/2026-10-18-project-cleanup/
+/archive/2026-10-20-pre-agency-core/
+/archive/runtime_cleanup_*/
+/archive/training_rejected/

@@ -1,0 +1,168 @@
+LAST Z / PEVA — FINAL WORKING SOLUTION
+=======================================
+
+STATUS: PASS — raw incoming chat capture works without OCR.
+
+Root cause
+----------
+The prior patch targeted the obsolete l_slg_all ChatNetManager.  The active
+runtime implementation is instead the base class required by the wrapper:
+
+  SlgEngine.Chat.Controller.ChatNetManagerBase
+
+It is stored in the active route discovered from the packaged gameres manifest:
+
+  bundle:  slgengine_main_luatxt_chat_all_0290534658a2bf1172fe1b39063663e2.bundle
+  asset:   Assets/SlgEngine/Main/LuaTxt/Chat/Controller/ChatNetManagerBase.bytes
+  path_id: 6408915687859991957
+
+The post-update loader may retain a downloaded CDN manifest alongside the APK.
+The updater therefore patches, embeds and signs all three related APK entries:
+the chat bundle, gameres and gameres.version.  It uses the active CDN manifest
+version (2142 during this verification), so startup skips a needless manifest
+download.  The final runtime test proves that the active ChatNetManagerBase is
+loaded from the signed patched APK route even with the current local manifest.
+
+Exact Lua changes
+-----------------
+The updater discovers the asset and refuses unknown bytecode shapes.
+
+  1. 14 Lua short-string constants: ChatPrint -> print
+  2. Callback-local instruction at normalized byte offset 3485:
+       80 03 01 00   (MOVE 7 1)
+       80 03 02 00   (MOVE 7 2)
+
+The second change makes the callback print the JSON payload argument rather
+than the old non-payload argument.  The saved bundle is reopened with UnityPy
+and its TextAsset bytes must exactly match the replacement before any APK is
+created.
+
+Integrity — final standard patch
+--------------------------------
+Stock active bundle
+  size:   248957
+  CRC32:  2231317949
+  SHA256: 9bf376fa8937767befc06cd0fc9c193583ef86b4920265f41ea70554fd92ea7e
+
+Patched active bundle
+  size:   250050
+  CRC32:  2174951592
+  SHA256: b67910411150a495589eb356fcd8fb2c0214980540651c1c621f761b7c2c9c4f
+
+Patched gameres target line
+  1205,slgengine_main_luatxt_chat_all_0290534658a2bf1172fe1b39063663e2.bundle,2174951592,250050,43244-43398,0,0,0
+
+Patched gameres
+  size:   4882029
+  CRC32:  1262533289
+  SHA256: 56f123bc4cdd28184d6100e74486e5a14a580d32da2e0ecafa98e1c7b2cd7fdd
+
+Patched gameres.version
+  2142,4882029,1262533289
+
+Final signed install-time split
+  build:  patch\current\build_20261017_224824\split_install_time_pack.signed.apk
+  size:   1832467893
+  SHA256: d8ad77f8f3b5d13984aa19394a79c84701f3bde85964105dfcee4e7281b84576
+
+The APK entry replacement was round-trip verified and the resulting base,
+config and install-time APKs passed apksigner v1/v2/v3 verification.
+
+Runtime evidence
+----------------
+1. A same-size Init canary first proved that the patched ChatNetManagerBase was
+   executed: PEVA_CHATNET_INIT_OK!! appeared with PEva UID.
+2. The final standard updater was then built and installed through the tested
+   Android pm install-create/install-write/install-commit path: INSTALL_OK.
+3. The active installed split SHA256 exactly matches the final signed split.
+4. After restart, logcat contained:
+     ChatNetManager:Init %s    1224463480000772
+     ChatManager2:Init
+     [LUA][callback] ... JSON
+5. The final standard runtime emitted 15 callbacks, including a live
+   push.chat.room JSON; Lua/XLua, AssetBundle and CRC error counts were zero.
+6. The game reached the base and the Chat UI opened normally after the final
+   standard installation.
+
+Actual incoming PM — end-to-end proof
+--------------------------------------
+Sent from OG doktorb (UID 1349515331000772) to PEva after the runtime canary:
+
+  cmd:      push.chat.room
+  roomId:   custom_1349515331000772_1224463480000772_v2
+  sender:   1349515331000772
+  seqId:    310
+  msg:      REMOTE_CODEX_FINAL_901
+  pushseq:  10000210000212318583843214387
+
+The raw callback appeared in Unity logcat and was emitted by the live Python
+capture into data\captures\runtime_pm_capture_utf8.jsonl.  The persisted record contains the
+complete data object as well as room_id, sender_uid, text and seq_id.
+
+The exact persisted record was passed into LastZAgent and produced:
+
+  status: reply_ready
+  stored incoming messages: 1
+  pending replies: 1
+  outgoing writes: 0
+
+This agent integration used the project test AI adapter so it could prove the
+capture -> validation -> SQLite -> pending-reply path without sending anything
+to a player.  The local llama server health check was false during this test,
+so no real AI reply was requested or sent.
+
+Capture and send-confirmation compatibility fixes
+-------------------------------------------------
+chat_capture.py and adb_controll.py now accept both protocol names:
+
+  push.chat.room
+  push.chat.up.room
+
+The latter is emitted by some current Last Z callbacks.  chat_capture.py also
+forces UTF-8 on Windows console output, preventing emoji in an incoming message
+from terminating the live capture process.  A live JSONL test saved 23 real
+messages containing emoji and passed strict UTF-8 validation.
+
+Repeatable updater
+------------------
+Final updater:
+
+  apply_lastz_chat_capture_patch.ps1
+
+It dynamically discovers the current manifest route and validates all known
+Lua invariants before changing anything.  It never overwrites source APKs.
+It repacks with UnityPy packer="original", updates only the target manifest
+CRC/size, writes the matching gameres.version, signs all splits and installs
+through a verified Android install session.
+
+Normal re-installation over the current local debug-signed build:
+
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\projekty\lastZAI\apply_lastz_chat_capture_patch.ps1" -Install
+
+After replacing the installed game with an official/store-signed update, first
+place that update's three current APK splits in apk\current\ (base.apk,
+split_config.arm64_v8a.apk, split_install_time_pack.apk), then use this one
+command:
+
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\projekty\lastZAI\apply_lastz_chat_capture_patch.ps1" -Install -Reinstall
+
+The explicit -Reinstall is necessary because Android refuses an in-place
+signature change.  The script backs up external app files first; without root,
+Android does not permit restoration of private internal app data after an
+uninstall.
+
+Relevant changed files
+----------------------
+  tools\patching\update_lastz_chat_capture.py
+  tools\patching\replace_apk_asset_entry.py
+  apply_lastz_chat_capture_patch.ps1
+  chat_capture.py
+  adb_controll.py
+
+Verification commands run successfully
+---------------------------------------
+  py chat_capture.py --self-test
+  py adb_controll.py --self-test
+  py agent.py --self-test
+  py -m py_compile chat_capture.py adb_controll.py agent.py tools\patching\update_lastz_chat_capture.py tools\patching\replace_apk_asset_entry.py
+

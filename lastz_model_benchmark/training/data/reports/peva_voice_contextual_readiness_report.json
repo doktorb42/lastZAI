@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "action_v1_frozen_qualification": true,
+    "all_required_checks": true,
+    "approved_pilot_minimum": true,
+    "hash_lineage_valid": true,
+    "leakage_failure_counter_zero": true,
+    "leakage_report_passed": true,
+    "nonempty_train_validation_test": true,
+    "quality_failure_counters_zero": true,
+    "required_categories_covered": true,
+    "required_length_bands_covered": true,
+    "split_report_passed": true,
+    "validation_report_passed": true
+  },
+  "config_path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\configs\\peva_voice_contextual.yaml",
+  "counts": {
+    "approved_valid_rows": 330,
+    "generic_assistant_style_failures": {},
+    "leakage_failures": {},
+    "missing_categories": [],
+    "missing_length_bands": [],
+    "quality_failure_categories": {},
+    "required_minimum": 300,
+    "split": {
+      "test": 33,
+      "train": 264,
+      "validation": 33
+    },
+    "target_pilot_rows": 330
+  },
+  "created_at": "2026-10-27T13:51:29+00:00",
+  "dataset_paths": {
+    "test": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\peva_voice_contextual_test.jsonl",
+    "train": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\peva_voice_contextual_train.jsonl",
+    "validation": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\peva_voice_contextual_validation.jsonl"
+  },
+  "errors": [],
+  "hashes": {
+    "test": "94e4e3aea9a370c7fbc8283320fc74edb869ff1368cd11fe45af831c77125242",
+    "train": "9b0a32ecc8533caf382e001aa839f4a0960c3d05732c6a6f7b727c864019c769",
+    "validation": "fdb34c4e2eb825fdbfa6376863a0b4569bec54f2a0df3529c43ad2e54883f79b"
+  },
+  "ready": true,
+  "reports": {
+    "action_v1_comparison": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\outputs\\reports\\action_v1_full_holdout_comparison.json",
+    "leakage": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reports\\peva_voice_contextual_benchmark_leakage_report.json",
+    "split": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\processed\\peva_voice_contextual_quality_gate.json",
+    "validation": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\training\\data\\reports\\peva_voice_contextual_validation_report.json"
+  },
+  "schema_version": 1,
+  "stage": "chat_v1_readiness",
+  "status": "CHAT V1 TRAINING READY"
+}
