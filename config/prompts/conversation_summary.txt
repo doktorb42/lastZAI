@@ -1,0 +1,15 @@
+Summarize older conversation between PEva and one Last Z player.
+
+Preserve facts that may matter later:
+- decisions
+- plans
+- promises
+- event discussions
+- player preferences
+- useful relationship context
+- unresolved topics
+
+Do not invent details. Do not repeat recent messages that will already be provided separately.
+
+Keep the summary compact and factual.
+Return only the summary.

@@ -1,0 +1,75 @@
+{
+  "profile": "default",
+  "runtime": {
+    "player_loop": true,
+    "private_only": true,
+    "auto_send": false,
+    "clear_logcat": true,
+    "record_player_loop": true,
+    "social_debug": false
+  },
+  "llm": {
+    "host": "127.0.0.1",
+    "port": 8080,
+    "auto_start_server": false,
+    "shutdown_managed_server": true,
+    "allow_role_override": false,
+    "chat_model": {
+      "enabled": true,
+      "model_id": "peva",
+      "path": "",
+      "alias": "chat"
+    },
+    "intent_model": {
+      "enabled": true,
+      "use_chat_model": true,
+      "path": "",
+      "alias": "intent"
+    },
+    "memory_model": {
+      "enabled": true,
+      "use_chat_model": true,
+      "path": "",
+      "alias": "memory"
+    },
+    "action_model": {
+      "enabled": false,
+      "path": "",
+      "alias": "action"
+    }
+  },
+  "llama_server": {
+    "executable": "lastz_model_benchmark/runtime/llama-cpp-cuda-b11430/llama-server.exe",
+    "gpu_layers": 999,
+    "context_size": 4096,
+    "threads": 0
+  },
+  "navigation": {
+    "ui_effect_poll_ms": 200,
+    "ui_effect_timeout_ms": 2000,
+    "private_chat_stable_samples": 2
+  },
+  "logging": {
+    "message_content": true,
+    "navigation": true,
+    "observations": true
+  },
+  "humanization": {
+    "enabled": false,
+    "naturalness_rewrite": false,
+    "response_delay": false,
+    "relationship_adaptation": false,
+    "memory_adaptation": false
+  },
+  "proactive": {
+    "enabled": true,
+    "auto_send": false,
+    "global_hourly_limit": 3,
+    "same_player_min_minutes": 180,
+    "same_topic_min_minutes": 720
+  },
+  "agency": {
+    "enabled": true,
+    "social_preview_fallback": true
+  }
+}

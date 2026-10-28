@@ -1,0 +1,22 @@
+{
+  "experiment": "lastz-qwen2.5-3b-multitask-v1",
+  "phase": "multitask_gated",
+  "blocked_until": "Both Action V1 and Chat V1 have passed their independent evaluations.",
+  "model": {
+    "training_model_id": "unsloth/Qwen2.5-3B-Instruct-unsloth-bnb-4bit",
+    "training_revision": "21d7790b1332196a5cf65ba72f2b46b659f74ddf",
+    "max_seq_length": 1024,
+    "load_in_4bit": true
+  },
+  "sampling": {
+    "action": 0.6,
+    "chat": 0.4,
+    "alternative_ratio": {"action": 0.5, "chat": 0.5}
+  },
+  "acceptance": {
+    "must_not_reduce_action_schema_validity": true,
+    "must_not_reduce_action_legal_rate": true,
+    "must_not_reduce_action_exact_rate": true,
+    "chat_player_ready_required": true
+  }
+}

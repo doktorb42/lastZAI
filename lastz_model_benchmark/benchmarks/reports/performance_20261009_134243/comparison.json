@@ -1,0 +1,2413 @@
+{
+  "schema_version": 3,
+  "started_at": "2026-10-09T13:42:43+02:00",
+  "run_directory": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\reports\\performance_20261009_134243",
+  "bundle_root": "D:\\projekty\\lastZAI\\lastz_model_benchmark",
+  "hardware": {
+    "cpu": "AMD Ryzen 7 5800X",
+    "gpu": "NVIDIA GeForce RTX 3050 8 GB",
+    "ram": "32 GB",
+    "os": "Windows"
+  },
+  "configuration": {
+    "suites": [
+      "production_action_suite"
+    ],
+    "action_contexts": [
+      1024
+    ],
+    "chat_contexts": [
+      1024,
+      2048,
+      4096
+    ],
+    "action_rounds": 1,
+    "chat_rounds": 1,
+    "warmup": 1,
+    "cache_modes": [
+      "enabled"
+    ],
+    "gpu_layers_requested": 99,
+    "threads": 16,
+    "chat_modes": [
+      "streaming",
+      "non_streaming"
+    ],
+    "max_action_tokens": 24,
+    "reasoning_budget": 0,
+    "backends": [
+      "cuda"
+    ],
+    "seed": 20261009,
+    "minimum_vram_headroom_mib": 1536,
+    "speculative": "off",
+    "normal_chat_character_limit": 950
+  },
+  "backend_inventory": {
+    "probes": {
+      "cuda": "Available devices:\n  CUDA0: NVIDIA GeForce RTX 3050 (8191 MiB, 7196 MiB free)\n"
+    },
+    "targets": [
+      {
+        "backend": "vulkan",
+        "status": "not_requested"
+      },
+      {
+        "requested": "cuda",
+        "server": ".\\lastz_model_benchmark\\runtime\\llama-cpp-cuda-b11430\\llama-server.exe",
+        "device": "CUDA0",
+        "available": true,
+        "reason": "device detected: NVIDIA GeForce RTX 3050 (8191 MiB, 7196 MiB free)"
+      }
+    ]
+  },
+  "action_schema_contract": {
+    "vectors": [
+      {
+        "id": "wait_valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "passed": true,
+        "reason": null
+      },
+      {
+        "id": "reply_private_valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "passed": true,
+        "reason": null
+      },
+      {
+        "id": "person_valid_zero",
+        "expected_valid": true,
+        "actual_valid": true,
+        "passed": true,
+        "reason": null
+      },
+      {
+        "id": "person_missing_index",
+        "expected_valid": false,
+        "actual_valid": false,
+        "passed": true,
+        "reason": "invalid open_private_person object"
+      },
+      {
+        "id": "person_boolean_index",
+        "expected_valid": false,
+        "actual_valid": false,
+        "passed": true,
+        "reason": "invalid open_private_person object"
+      },
+      {
+        "id": "raw_send_rejected",
+        "expected_valid": false,
+        "actual_valid": false,
+        "passed": true,
+        "reason": "unknown selector action"
+      },
+      {
+        "id": "reply_with_text_rejected",
+        "expected_valid": false,
+        "actual_valid": false,
+        "passed": true,
+        "reason": "no-argument action contains extra/missing keys"
+      }
+    ],
+    "passed": 7,
+    "total": 7,
+    "all_passed": true
+  },
+  "delivery_schema_contract": {
+    "vectors": [
+      {
+        "id": "wait_valid",
+        "expected_legal": true,
+        "actual_legal": true,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": null,
+          "legal": true,
+          "executor_payload": {
+            "action": "wait"
+          },
+          "errors": []
+        }
+      },
+      {
+        "id": "person_valid_zero",
+        "expected_legal": true,
+        "actual_legal": true,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": null,
+          "legal": true,
+          "executor_payload": {
+            "action": "open_private_person",
+            "index": 0
+          },
+          "errors": []
+        }
+      },
+      {
+        "id": "person_missing_index",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_boolean_index",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_string_index",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_out_of_range_negative",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_out_of_range_high",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_case_restricted_index",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "send_valid",
+        "expected_legal": true,
+        "actual_legal": true,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": true,
+          "legal": true,
+          "executor_payload": {
+            "action": "send_message",
+            "text": "Thanks for the reminder."
+          },
+          "normalization": {
+            "raw_text": "Thanks for the reminder.",
+            "text": "Thanks for the reminder.",
+            "raw_character_count": 24,
+            "character_count": 24,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": []
+        }
+      },
+      {
+        "id": "send_empty",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "",
+            "text": "",
+            "raw_character_count": 0,
+            "character_count": 0,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "invalid send_message schema; text must be a 1-1024 character string"
+          ]
+        }
+      },
+      {
+        "id": "send_whitespace",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "   ",
+            "text": "",
+            "raw_character_count": 3,
+            "character_count": 0,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "normalized message must be nonblank, straight-apostrophe compatible, and <= 1024 characters"
+          ]
+        }
+      },
+      {
+        "id": "send_nonstring",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "",
+            "text": "",
+            "raw_character_count": 0,
+            "character_count": 0,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "invalid send_message schema; text must be a 1-1024 character string"
+          ]
+        }
+      },
+      {
+        "id": "send_1024_valid",
+        "expected_legal": true,
+        "actual_legal": true,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": true,
+          "legal": true,
+          "executor_payload": {
+            "action": "send_message",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          },
+          "normalization": {
+            "raw_text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "raw_character_count": 1024,
+            "character_count": 1024,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": []
+        }
+      },
+      {
+        "id": "send_1025_invalid",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "raw_character_count": 1025,
+            "character_count": 1025,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "invalid send_message schema; text must be a 1-1024 character string"
+          ]
+        }
+      },
+      {
+        "id": "send_extra_key",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "Okay",
+            "text": "Okay",
+            "raw_character_count": 4,
+            "character_count": 4,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "invalid send_message schema; text must be a 1-1024 character string"
+          ]
+        }
+      },
+      {
+        "id": "send_unavailable",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": true,
+          "legal": false,
+          "executor_payload": {
+            "action": "send_message",
+            "text": "Okay"
+          },
+          "normalization": {
+            "raw_text": "Okay",
+            "text": "Okay",
+            "raw_character_count": 4,
+            "character_count": 4,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "send_message is not authorized by the executor capability descriptor"
+          ]
+        }
+      },
+      {
+        "id": "disabled_action",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      }
+    ],
+    "passed": 17,
+    "total": 17,
+    "all_passed": true
+  },
+  "player_ready_gate_contract": {
+    "vectors": [
+      {
+        "id": "visible_think_tag",
+        "expected_meta_reasoning_leakage": true,
+        "actual_meta_reasoning_leakage": true,
+        "reasoning_side_channel_present": false,
+        "passed": true,
+        "reasons": [
+          "thinking_or_analysis_tag"
+        ]
+      },
+      {
+        "id": "user_prompt_analysis",
+        "expected_meta_reasoning_leakage": true,
+        "actual_meta_reasoning_leakage": true,
+        "reasoning_side_channel_present": false,
+        "passed": true,
+        "reasons": [
+          "prompt_or_user_analysis",
+          "unanchored_prompt_or_user_analysis"
+        ]
+      },
+      {
+        "id": "response_construction",
+        "expected_meta_reasoning_leakage": true,
+        "actual_meta_reasoning_leakage": true,
+        "reasoning_side_channel_present": false,
+        "passed": true,
+        "reasons": [
+          "response_construction_discussion"
+        ]
+      },
+      {
+        "id": "conciseness_plan",
+        "expected_meta_reasoning_leakage": true,
+        "actual_meta_reasoning_leakage": true,
+        "reasoning_side_channel_present": false,
+        "passed": true,
+        "reasons": [
+          "conciseness_planning"
+        ]
+      },
+      {
+        "id": "task_decomposition",
+        "expected_meta_reasoning_leakage": true,
+        "actual_meta_reasoning_leakage": true,
+        "reasoning_side_channel_present": false,
+        "passed": true,
+        "reasons": [
+          "task_decomposition"
+        ]
+      },
+      {
+        "id": "clean_player_reply",
+        "expected_meta_reasoning_leakage": false,
+        "actual_meta_reasoning_leakage": false,
+        "reasoning_side_channel_present": false,
+        "passed": true,
+        "reasons": []
+      },
+      {
+        "id": "hidden_telemetry_not_visible",
+        "expected_meta_reasoning_leakage": false,
+        "actual_meta_reasoning_leakage": false,
+        "reasoning_side_channel_present": true,
+        "passed": true,
+        "reasons": []
+      }
+    ],
+    "passed": 7,
+    "total": 7,
+    "all_passed": true
+  },
+  "send_message_schema": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "enum": [
+          "send_message"
+        ]
+      },
+      "text": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "required": [
+      "action",
+      "text"
+    ],
+    "additionalProperties": false
+  },
+  "results": [
+    {
+      "suite": "production_action_suite",
+      "model": {
+        "id": "ministral-3-8b-instruct-2512-q4-k-m",
+        "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Ministral-3-8B-Instruct-2512-Q4_K_M.gguf",
+        "size_bytes": 5198911904,
+        "manifest": {
+          "id": "ministral-3-8b-instruct-2512-q4-k-m",
+          "filename": "Ministral-3-8B-Instruct-2512-Q4_K_M.gguf",
+          "tier": "quality-7b",
+          "parameters": "8.4B language model (text-only benchmark use)",
+          "quantization": "Q4_K_M",
+          "license": "Apache-2.0",
+          "source_repository": "mistralai/Ministral-3-8B-Instruct-2512-GGUF",
+          "source_url": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF",
+          "size_bytes": 5200000000,
+          "sha256": "33e7a72cf5e6e2cfc2f2847075acc013d68bba023e35310cef86b5cf8fdca761",
+          "reason": "Current Apache-2.0 quality challenger with native structured JSON and function calling. It is Instruct, not the separate Reasoning variant. It must still prove full CUDA offload and sufficient BlueStacks VRAM headroom.",
+          "benchmark_roles": [
+            "action",
+            "chat"
+          ],
+          "download": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF/resolve/main/Ministral-3-8B-Instruct-2512-Q4_K_M.gguf"
+        }
+      },
+      "backend": {
+        "requested": "cuda",
+        "server": ".\\lastz_model_benchmark\\runtime\\llama-cpp-cuda-b11430\\llama-server.exe",
+        "device": "CUDA0",
+        "available": true,
+        "reason": "device detected: NVIDIA GeForce RTX 3050 (8191 MiB, 7196 MiB free)"
+      },
+      "context": 1024,
+      "cache_mode": "enabled",
+      "speculative": "off",
+      "command": [
+        ".\\lastz_model_benchmark\\runtime\\llama-cpp-cuda-b11430\\llama-server.exe",
+        "-m",
+        "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Ministral-3-8B-Instruct-2512-Q4_K_M.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "60148",
+        "--ctx-size",
+        "1024",
+        "--gpu-layers",
+        "99",
+        "--threads",
+        "16",
+        "--parallel",
+        "1",
+        "--jinja",
+        "--flash-attn",
+        "auto",
+        "--reasoning-budget",
+        "0",
+        "--metrics",
+        "--perf",
+        "--device",
+        "CUDA0",
+        "--cache-prompt"
+      ],
+      "server_log": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\reports\\performance_20261009_134243\\logs\\production_action_suite_cuda_ministral-3-8b-instruct-2512-q4-k-m_ctx1024_enabled_off.log",
+      "backend_evidence_log": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\reports\\performance_20261009_134243\\logs\\production_action_suite_cuda_ministral-3-8b-instruct-2512-q4-k-m_ctx1024_enabled_off_backend_evidence.log",
+      "server_properties": {
+        "default_generation_settings": {
+          "params": {
+            "seed": 4294967295,
+            "temperature": 0.800000011920929,
+            "dynatemp_range": 0.0,
+            "dynatemp_exponent": 1.0,
+            "top_k": 40,
+            "top_p": 0.949999988079071,
+            "min_p": 0.05000000074505806,
+            "top_n_sigma": -1.0,
+            "xtc_probability": 0.0,
+            "xtc_threshold": 0.10000000149011612,
+            "typical_p": 1.0,
+            "repeat_last_n": 64,
+            "repeat_penalty": 1.0,
+            "presence_penalty": 0.0,
+            "frequency_penalty": 0.0,
+            "dry_multiplier": 0.0,
+            "dry_base": 1.75,
+            "dry_allowed_length": 2,
+            "dry_penalty_last_n": 64,
+            "mirostat": 0,
+            "mirostat_tau": 5.0,
+            "mirostat_eta": 0.10000000149011612,
+            "adaptive_target": -1.0,
+            "adaptive_decay": 0.8999999761581421,
+            "max_tokens": -1,
+            "n_predict": -1,
+            "n_keep": 0,
+            "n_discard": 0,
+            "ignore_eos": false,
+            "stream": false,
+            "n_probs": 0,
+            "min_keep": 0,
+            "chat_format": "Content-only",
+            "reasoning_format": "none",
+            "reasoning_in_content": false,
+            "generation_prompt": "",
+            "samplers": [
+              "penalties",
+              "dry",
+              "top_n_sigma",
+              "top_k",
+              "typ_p",
+              "top_p",
+              "min_p",
+              "xtc",
+              "temperature"
+            ],
+            "speculative.types": "none",
+            "timings_per_token": false,
+            "post_sampling_probs": false,
+            "backend_sampling": false,
+            "lora": []
+          },
+          "n_ctx": 1024
+        },
+        "total_slots": 1,
+        "model_alias": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Ministral-3-8B-Instruct-2512-Q4_K_M.gguf",
+        "model_ftype": "Q4_K - Medium",
+        "model_path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Ministral-3-8B-Instruct-2512-Q4_K_M.gguf",
+        "modalities": {
+          "vision": false,
+          "video": false,
+          "audio": false
+        },
+        "media_marker": "<__media_0UPoDM9CtAkcH6wSHMIkZipW6kQMnD8k__>",
+        "endpoint_slots": true,
+        "endpoint_props": false,
+        "endpoint_metrics": true,
+        "ui": true,
+        "ui_settings": {},
+        "chat_template": "{#- Default system message if no system prompt is passed. #}\n{%- set default_system_message = 'You are Ministral-3-8B-Instruct-2512, a Large Language Model (LLM) created by Mistral AI, a French startup headquartered in Paris.\\nYou power an AI assistant called Le Chat.\\nYour knowledge base was last updated on 2023-10-01.\\nThe current date is {today}.\\n\\nWhen you\\'re not sure about some information or when the user\\'s request requires up-to-date or specific data, you must use the available tools to fetch the information. Do not hesitate to use tools whenever they can provide a more accurate or complete response. If no relevant tools are available, then clearly state that you don\\'t have the information and avoid making up anything.\\nIf the user\\'s question is not clear, ambiguous, or does not provide enough context for you to accurately answer the question, you do not try to answer it right away and you rather ask the user to clarify their request (e.g. \"What are some good restaurants around me?\" => \"Where are you?\" or \"When is the next flight to Tokyo\" => \"Where do you travel from?\").\\nYou are always very attentive to dates, in particular you try to resolve dates (e.g. \"yesterday\" is {yesterday}) and when asked about information at specific dates, you discard information that is at another date.\\nYou follow these instructions in all languages, and always respond to the user in the language they use or request.\\nNext sections describe the capabilities that you have.\\n\\n# WEB BROWSING INSTRUCTIONS\\n\\nYou cannot perform any web search or access internet to open URLs, links etc. If it seems like the user is expecting you to do so, you clarify the situation and ask the user to copy paste the text directly in the chat.\\n\\n# MULTI-MODAL INSTRUCTIONS\\n\\nYou have the ability to read images, but you cannot generate images. You also cannot transcribe audio files or videos.\\nYou cannot read nor transcribe audio files or videos.\\n\\n# TOOL CALLING INSTRUCTIONS\\n\\nYou may have access to tools that you can use to fetch information or perform actions. You must use these tools in the following situations:\\n\\n1. When the request requires up-to-date information.\\n2. When the request requires specific data that you do not have in your knowledge base.\\n3. When the request involves actions that you cannot perform without tools.\\n\\nAlways prioritize using tools to provide the most accurate and helpful response. If tools are not available, inform the user that you cannot perform the requested action at the moment.' %}\n\n{#- Begin of sequence token. #}\n{{- bos_token }}\n\n{#- Handle system prompt if it exists. #}\n{#- System prompt supports text content or text chunks. #}\n{%- if messages[0]['role'] == 'system' %}\n    {{- '[SYSTEM_PROMPT]' -}}\n    {%- if messages[0]['content'] is string %}\n        {{- messages[0]['content'] -}}\n    {%- else %}        \n        {%- for block in messages[0]['content'] %}\n            {%- if block['type'] == 'text' %}\n                {{- block['text'] }}\n            {%- else %}\n                {{- raise_exception('Only text chunks are supported in system message contents.') }}\n            {%- endif %}\n        {%- endfor %}\n    {%- endif %}\n    {{- '[/SYSTEM_PROMPT]' -}}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set loop_messages = messages %}\n    {%- if default_system_message != '' %}\n        {{- '[SYSTEM_PROMPT]' + default_system_message + '[/SYSTEM_PROMPT]' }}\n    {%- endif %}\n{%- endif %}\n\n\n{#- Tools definition #}\n{%- set tools_definition = '' %}\n{%- set has_tools = false %}\n{%- if tools is defined and tools is not none and tools|length > 0 %}\n    {%- set has_tools = true %}\n    {%- set tools_definition = '[AVAILABLE_TOOLS]' + (tools| tojson) + '[/AVAILABLE_TOOLS]' %}\n    {{- tools_definition }}\n{%- endif %}\n\n{#- Checks for alternating user/assistant messages. #}\n{%- set ns = namespace(index=0) %}\n{%- for message in loop_messages %}\n    {%- if message.role == 'user' or (message.role == 'assistant' and (message.tool_calls is not defined or message.tool_calls is none or message.tool_calls | length == 0)) %}\n        {%- if (message['role'] == 'user') != (ns.index % 2 == 0) %}\n            {{- raise_exception('After the optional system message, conversation roles must alternate user and assistant roles except for tool calls and results.') }}\n        {%- endif %}\n        {%- set ns.index = ns.index + 1 %}\n    {%- endif %}\n{%- endfor %}\n\n{#- Handle conversation messages. #}\n{%- for message in loop_messages %}\n\n    {#- User messages supports text content or text and image chunks. #}\n    {%- if message['role'] == 'user' %}\n        {%- if message['content'] is string %}\n            {{- '[INST]' + message['content'] + '[/INST]' }}\n        {%- elif message['content'] | length > 0 %}\n            {{- '[INST]' }}\n            {%- if message['content'] | length == 2 %}\n                {%- set blocks = message['content'] | sort(attribute='type') %}\n            {%- else %}\n                {%- set blocks = message['content'] %}\n            {%- endif %}\n            {%- for block in blocks %}\n                {%- if block['type'] == 'text' %}\n                    {{- block['text'] }}\n                {%- elif block['type'] in ['image', 'image_url'] %}\n                    {{- '[IMG]' }}\n                {%- else %}\n                    {{- raise_exception('Only text, image and image_url chunks are supported in user message content.') }}\n                {%- endif %}\n            {%- endfor %}\n            {{- '[/INST]' }}\n        {%- else %}\n            {{- raise_exception('User message must have a string or a list of chunks in content') }}\n        {%- endif %}\n\n    {#- Assistant messages supports text content or text and image chunks. #}\n    {%- elif message['role'] == 'assistant' %}\n        {%- if false %}\n            {{- raise_exception('Assistant message must have a string or a list of chunks in content or a list of tool calls.') }}\n        {%- endif %}\n\n        {%- if message['content'] is string %}\n            {{- message['content'] }}\n        {%- elif message['content'] | length > 0 %}\n            {%- for block in message['content'] %}\n                {%- if block['type'] == 'text' %}\n                    {{- block['text'] }}\n                {%- else %}\n                    {{- raise_exception('Only text chunks are supported in assistant message contents.') }}\n                {%- endif %}\n            {%- endfor %}\n        {%- endif %}\n        \n        {%- if message['tool_calls'] is defined and message['tool_calls'] is not none and message['tool_calls']|length > 0 %}\n            {%- for tool in message['tool_calls'] %}\n                {%- set arguments = tool['function']['arguments'] %}\n                {%- if arguments is not string %}\n                    {%- set arguments = arguments|tojson|safe %}\n                {%- elif arguments == '' %}\n                    {%- set arguments = '{}' %}\n                {%- endif %}\n                {{- '[TOOL_CALLS]' + tool['function']['name'] + '[ARGS]' + arguments }}\n            {%- endfor %}\n        {%- endif %}\n\n        {#- End of sequence token for each assistant messages. #}\n        {{- eos_token }}\n\n    {#- Tool messages only supports text content. #}\n    {%- elif message['role'] == 'tool' %}\n        {{- '[TOOL_RESULTS]' + message['content']|string + '[/TOOL_RESULTS]' }}\n\n    {#- Raise exception for unsupported roles. #}\n    {%- else %}\n        {{- raise_exception('Only user, assistant and tool roles are supported, got ' + message['role']) }}\n    {%- endif %}\n{%- endfor %}",
+        "chat_template_caps": {
+          "supports_object_arguments": true,
+          "supports_parallel_tool_calls": true,
+          "supports_preserve_reasoning": false,
+          "supports_reasoning_effort": false,
+          "supports_string_content": true,
+          "supports_system_role": true,
+          "supports_tool_calls": true,
+          "supports_tools": true,
+          "supports_typed_content": false
+        },
+        "bos_token": "<s>",
+        "eos_token": "</s>",
+        "build_info": "b11430-8345f3339",
+        "is_sleeping": false,
+        "cors_proxy_enabled": false
+      },
+      "backend_evidence": {
+        "loaded_backends": [
+          "CPU",
+          "CUDA",
+          "RPC"
+        ],
+        "selected_devices": [
+          "CUDA0"
+        ],
+        "offload": [
+          {
+            "offloaded": 35,
+            "total": 35
+          }
+        ],
+        "full_gpu_offload": true,
+        "buffers": [
+          {
+            "device": "CUDA0",
+            "kind": "model",
+            "mib": 4662.05
+          },
+          {
+            "device": "CUDA0",
+            "kind": "kv",
+            "mib": 136.0
+          },
+          {
+            "device": "CUDA0",
+            "kind": "compute",
+            "mib": 117.02
+          }
+        ],
+        "context_values": [
+          "1024"
+        ],
+        "speculative_mentions": [
+          "0.02.932.416 I spec common_specu: no implementations specified for speculative decoding"
+        ],
+        "verified": true,
+        "reason": "verified selected device and GPU layer offload"
+      },
+      "vram": {
+        "before_model_load": {
+          "name": "NVIDIA GeForce RTX 3050",
+          "memory_total_mib": 8192.0,
+          "memory_used_mib": 673.0,
+          "gpu_utilization_pct": 3.0,
+          "memory_utilization_pct": 18.0,
+          "temperature_c": 41.0,
+          "memory_free_mib": 7519.0,
+          "captured_at": "2026-10-09T13:42:43+02:00"
+        },
+        "after_model_load": {
+          "name": "NVIDIA GeForce RTX 3050",
+          "memory_total_mib": 8192.0,
+          "memory_used_mib": 5681.0,
+          "gpu_utilization_pct": 47.0,
+          "memory_utilization_pct": 3.0,
+          "temperature_c": 44.0,
+          "memory_free_mib": 2511.0,
+          "captured_at": "2026-10-09T13:42:46+02:00"
+        },
+        "during_generation": {
+          "sample_count": 77,
+          "peak_memory_used_mib": 5692.0,
+          "minimum_memory_free_mib": 2500.0,
+          "first": {
+            "name": "NVIDIA GeForce RTX 3050",
+            "memory_total_mib": 8192.0,
+            "memory_used_mib": 5681.0,
+            "gpu_utilization_pct": 47.0,
+            "memory_utilization_pct": 3.0,
+            "temperature_c": 44.0,
+            "memory_free_mib": 2511.0,
+            "captured_at": "2026-10-09T13:42:46+02:00"
+          },
+          "last": {
+            "name": "NVIDIA GeForce RTX 3050",
+            "memory_total_mib": 8192.0,
+            "memory_used_mib": 5692.0,
+            "gpu_utilization_pct": 74.0,
+            "memory_utilization_pct": 63.0,
+            "temperature_c": 56.0,
+            "memory_free_mib": 2500.0,
+            "captured_at": "2026-10-09T13:42:57+02:00"
+          }
+        }
+      },
+      "startup_seconds": 3.185,
+      "cold_first_hit": {
+        "case_id": "world_private_repeated_tick",
+        "category": "stateful-memory",
+        "expected_action": {
+          "action": "wait"
+        },
+        "raw_output": "{\"action\":\"wait\"}",
+        "e2e_ms": 701.181,
+        "ttfb_ms": 701.167,
+        "ttft_ms": null,
+        "usage": {
+          "completion_tokens": 10,
+          "prompt_tokens": 578,
+          "total_tokens": 588,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 578,
+          "prompt_ms": 437.579,
+          "prompt_per_token_ms": 0.7570570934256056,
+          "prompt_per_second": 1320.9043395592566,
+          "predicted_n": 10,
+          "predicted_ms": 246.281,
+          "predicted_per_token_ms": 27.364555555555555,
+          "predicted_per_second": 36.54362293477775
+        },
+        "metrics_delta": {
+          "prompt_tokens": 578.0,
+          "prompt_seconds": 0.43679,
+          "generation_tokens": 10.0,
+          "generation_seconds": 0.246281
+        },
+        "prompt_tokens_per_second": 1320.9043395592566,
+        "generation_tokens_per_second": 36.54362293477775,
+        "validation": {
+          "valid_json": true,
+          "schema_valid": true,
+          "legal_action": true,
+          "exact_match": true,
+          "selector_message_free": true,
+          "parsed": {
+            "action": "wait"
+          },
+          "errors": []
+        },
+        "memory_contract": {
+          "expected_after": true,
+          "calculated_after": true,
+          "matches_fixture": true
+        },
+        "error": null,
+        "phase": "cold_first_hit"
+      },
+      "warm_records": [
+        {
+          "case_id": "unknown_all_badges_safe",
+          "category": "unknown",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 336.752,
+          "ttfb_ms": 336.738,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 565,
+            "total_tokens": 575,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 97,
+            "prompt_ms": 91.18,
+            "prompt_per_token_ms": 0.9400000000000001,
+            "prompt_per_second": 1063.8297872340424,
+            "predicted_n": 10,
+            "predicted_ms": 242.606,
+            "predicted_per_token_ms": 26.956222222222223,
+            "predicted_per_second": 37.09718638450822
+          },
+          "metrics_delta": {
+            "prompt_tokens": 97.0,
+            "prompt_seconds": 0.09061699999999995,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.242606
+          },
+          "prompt_tokens_per_second": 1063.8297872340424,
+          "generation_tokens_per_second": 37.09718638450822,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 1,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "category": "core",
+          "expected_action": {
+            "action": "open_private_person",
+            "index": 0
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 378.001,
+          "ttfb_ms": 377.987,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 609,
+            "total_tokens": 619,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 141,
+            "prompt_ms": 133.07,
+            "prompt_per_token_ms": 0.9437588652482269,
+            "prompt_per_second": 1059.5926955737582,
+            "predicted_n": 10,
+            "predicted_ms": 241.708,
+            "predicted_per_token_ms": 26.856444444444445,
+            "predicted_per_second": 37.23501083952537
+          },
+          "metrics_delta": {
+            "prompt_tokens": 141.0,
+            "prompt_seconds": 0.132521,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24170399999999992
+          },
+          "prompt_tokens_per_second": 1059.5926955737582,
+          "generation_tokens_per_second": 37.23501083952537,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": false,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": [
+              "expected {'action': 'open_private_person', 'index': 0}, got {'action': 'wait'}"
+            ]
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 2,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "world_private_repeated_tick",
+          "category": "stateful-memory",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 337.529,
+          "ttfb_ms": 337.515,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 578,
+            "total_tokens": 588,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 110,
+            "prompt_ms": 92.566,
+            "prompt_per_token_ms": 0.841509090909091,
+            "prompt_per_second": 1188.341291618953,
+            "predicted_n": 10,
+            "predicted_ms": 241.948,
+            "predicted_per_token_ms": 26.883111111111113,
+            "predicted_per_second": 37.198075619554615
+          },
+          "metrics_delta": {
+            "prompt_tokens": 110.0,
+            "prompt_seconds": 0.09202100000000002,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.2419500000000001
+          },
+          "prompt_tokens_per_second": 1188.341291618953,
+          "generation_tokens_per_second": 37.198075619554615,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 3,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "private_list_pending_index_range",
+          "category": "arguments",
+          "expected_action": {
+            "action": "open_private_person",
+            "index": 0
+          },
+          "raw_output": "{\n  \"action\": \"wait\"\n}",
+          "e2e_ms": 482.921,
+          "ttfb_ms": 482.907,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 14,
+            "prompt_tokens": 611,
+            "total_tokens": 625,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 143,
+            "prompt_ms": 132.595,
+            "prompt_per_token_ms": 0.9272377622377622,
+            "prompt_per_second": 1078.4720389154945,
+            "predicted_n": 14,
+            "predicted_ms": 347.278,
+            "predicted_per_token_ms": 26.71369230769231,
+            "predicted_per_second": 37.43398660439187
+          },
+          "metrics_delta": {
+            "prompt_tokens": 143.0,
+            "prompt_seconds": 0.131957,
+            "generation_tokens": 14.0,
+            "generation_seconds": 0.34728000000000003
+          },
+          "prompt_tokens_per_second": 1078.4720389154945,
+          "generation_tokens_per_second": 37.43398660439187,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": false,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": [
+              "expected {'action': 'open_private_person', 'index': 0}, got {'action': 'wait'}"
+            ]
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 4,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "conversation_reply_private_ready",
+          "category": "reply-pipeline",
+          "expected_action": {
+            "action": "reply_private"
+          },
+          "raw_output": "{\n  \"action\": \"wait\"\n}",
+          "e2e_ms": 482.099,
+          "ttfb_ms": 482.087,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 14,
+            "prompt_tokens": 606,
+            "total_tokens": 620,
+            "prompt_tokens_details": {
+              "cached_tokens": 470
+            }
+          },
+          "timings": {
+            "cache_n": 470,
+            "prompt_n": 136,
+            "prompt_ms": 130.999,
+            "prompt_per_token_ms": 0.9632279411764706,
+            "prompt_per_second": 1038.1758639378927,
+            "predicted_n": 14,
+            "predicted_ms": 348.117,
+            "predicted_per_token_ms": 26.77823076923077,
+            "predicted_per_second": 37.3437666072039
+          },
+          "metrics_delta": {
+            "prompt_tokens": 136.0,
+            "prompt_seconds": 0.13042500000000012,
+            "generation_tokens": 14.0,
+            "generation_seconds": 0.34811999999999976
+          },
+          "prompt_tokens_per_second": 1038.1758639378927,
+          "generation_tokens_per_second": 37.3437666072039,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": false,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": [
+              "expected {'action': 'reply_private'}, got {'action': 'wait'}"
+            ]
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 5,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "world_chat_action_unavailable_production",
+          "category": "unavailable",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 335.528,
+          "ttfb_ms": 335.514,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 566,
+            "total_tokens": 576,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 98,
+            "prompt_ms": 90.702,
+            "prompt_per_token_ms": 0.925530612244898,
+            "prompt_per_second": 1080.461290820489,
+            "predicted_n": 10,
+            "predicted_ms": 241.73,
+            "predicted_per_token_ms": 26.858888888888888,
+            "predicted_per_second": 37.23162205766765
+          },
+          "metrics_delta": {
+            "prompt_tokens": 98.0,
+            "prompt_seconds": 0.0901599999999998,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24173
+          },
+          "prompt_tokens_per_second": 1080.461290820489,
+          "generation_tokens_per_second": 37.23162205766765,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": false,
+            "calculated_after": false,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 6,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "hq_all_badges_no_chat",
+          "category": "contradictory-signals",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 337.903,
+          "ttfb_ms": 337.887,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 578,
+            "total_tokens": 588,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 110,
+            "prompt_ms": 93.469,
+            "prompt_per_token_ms": 0.8497181818181818,
+            "prompt_per_second": 1176.8607773700373,
+            "predicted_n": 10,
+            "predicted_ms": 241.449,
+            "predicted_per_token_ms": 26.82766666666667,
+            "predicted_per_second": 37.274952474435594
+          },
+          "metrics_delta": {
+            "prompt_tokens": 110.0,
+            "prompt_seconds": 0.09301000000000004,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.2414500000000004
+          },
+          "prompt_tokens_per_second": 1176.8607773700373,
+          "generation_tokens_per_second": 37.274952474435594,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 7,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "alliance_pending_action_unavailable",
+          "category": "unavailable",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 338.772,
+          "ttfb_ms": 338.756,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 578,
+            "total_tokens": 588,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 110,
+            "prompt_ms": 92.175,
+            "prompt_per_token_ms": 0.8379545454545454,
+            "prompt_per_second": 1193.3821535123407,
+            "predicted_n": 10,
+            "predicted_ms": 243.536,
+            "predicted_per_token_ms": 27.059555555555555,
+            "predicted_per_second": 36.95552197621707
+          },
+          "metrics_delta": {
+            "prompt_tokens": 110.0,
+            "prompt_seconds": 0.09166000000000007,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.2435299999999998
+          },
+          "prompt_tokens_per_second": 1193.3821535123407,
+          "generation_tokens_per_second": 36.95552197621707,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 8,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "hq_private_only",
+          "category": "edge",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 340.039,
+          "ttfb_ms": 340.025,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 578,
+            "total_tokens": 588,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 110,
+            "prompt_ms": 92.719,
+            "prompt_per_token_ms": 0.8429,
+            "prompt_per_second": 1186.3803535413454,
+            "predicted_n": 10,
+            "predicted_ms": 244.176,
+            "predicted_per_token_ms": 27.130666666666666,
+            "predicted_per_second": 36.85865932769806
+          },
+          "metrics_delta": {
+            "prompt_tokens": 110.0,
+            "prompt_seconds": 0.09216000000000002,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24418000000000006
+          },
+          "prompt_tokens_per_second": 1186.3803535413454,
+          "generation_tokens_per_second": 36.85865932769806,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 9,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "conversation_reply_private_not_ready",
+          "category": "reply-pipeline",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 375.034,
+          "ttfb_ms": 375.02,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 600,
+            "total_tokens": 610,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 132,
+            "prompt_ms": 130.735,
+            "prompt_per_token_ms": 0.9904166666666667,
+            "prompt_per_second": 1009.6760622633572,
+            "predicted_n": 10,
+            "predicted_ms": 241.381,
+            "predicted_per_token_ms": 26.82011111111111,
+            "predicted_per_second": 37.28545328754127
+          },
+          "metrics_delta": {
+            "prompt_tokens": 132.0,
+            "prompt_seconds": 0.13020999999999994,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24137999999999993
+          },
+          "prompt_tokens_per_second": 1009.6760622633572,
+          "generation_tokens_per_second": 37.28545328754127,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 10,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "category": "core",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 294.352,
+          "ttfb_ms": 294.337,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 579,
+            "total_tokens": 589,
+            "prompt_tokens_details": {
+              "cached_tokens": 550
+            }
+          },
+          "timings": {
+            "cache_n": 550,
+            "prompt_n": 29,
+            "prompt_ms": 48.305,
+            "prompt_per_token_ms": 1.6656896551724139,
+            "prompt_per_second": 600.3519304419832,
+            "predicted_n": 10,
+            "predicted_ms": 242.635,
+            "predicted_per_token_ms": 26.959444444444443,
+            "predicted_per_second": 37.09275248830548
+          },
+          "metrics_delta": {
+            "prompt_tokens": 29.0,
+            "prompt_seconds": 0.04779,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24263000000000012
+          },
+          "prompt_tokens_per_second": 600.3519304419832,
+          "generation_tokens_per_second": 37.09275248830548,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 11,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "category": "core",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 336.404,
+          "ttfb_ms": 336.392,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 565,
+            "total_tokens": 575,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 97,
+            "prompt_ms": 90.824,
+            "prompt_per_token_ms": 0.9363298969072165,
+            "prompt_per_second": 1067.9996476702192,
+            "predicted_n": 10,
+            "predicted_ms": 242.27,
+            "predicted_per_token_ms": 26.91888888888889,
+            "predicted_per_second": 37.14863581954018
+          },
+          "metrics_delta": {
+            "prompt_tokens": 97.0,
+            "prompt_seconds": 0.09026,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24226999999999999
+          },
+          "prompt_tokens_per_second": 1067.9996476702192,
+          "generation_tokens_per_second": 37.14863581954018,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 12,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "world_chat_unread",
+          "category": "core",
+          "expected_action": {
+            "action": "open_chat"
+          },
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "e2e_ms": 364.372,
+          "ttfb_ms": 364.357,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 578,
+            "total_tokens": 589,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 110,
+            "prompt_ms": 92.333,
+            "prompt_per_token_ms": 0.8393909090909091,
+            "prompt_per_second": 1191.340040938776,
+            "predicted_n": 11,
+            "predicted_ms": 269.093,
+            "predicted_per_token_ms": 26.9093,
+            "predicted_per_second": 37.16187340436206
+          },
+          "metrics_delta": {
+            "prompt_tokens": 110.0,
+            "prompt_seconds": 0.09186000000000005,
+            "generation_tokens": 11.0,
+            "generation_seconds": 0.2690999999999999
+          },
+          "prompt_tokens_per_second": 1191.340040938776,
+          "generation_tokens_per_second": 37.16187340436206,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": false,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 13,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "alliance_badge_plus_pending",
+          "category": "edge",
+          "expected_action": {
+            "action": "open_private_chat"
+          },
+          "raw_output": "{\n  \"action\": \"open_private_chat\"\n}",
+          "e2e_ms": 503.331,
+          "ttfb_ms": 503.317,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 592,
+            "total_tokens": 608,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 124,
+            "prompt_ms": 99.779,
+            "prompt_per_token_ms": 0.8046693548387096,
+            "prompt_per_second": 1242.7464696980328,
+            "predicted_n": 16,
+            "predicted_ms": 400.547,
+            "predicted_per_token_ms": 26.703133333333334,
+            "predicted_per_second": 37.44878878134151
+          },
+          "metrics_delta": {
+            "prompt_tokens": 124.0,
+            "prompt_seconds": 0.09905999999999993,
+            "generation_tokens": 16.0,
+            "generation_seconds": 0.40054000000000034
+          },
+          "prompt_tokens_per_second": 1242.7464696980328,
+          "generation_tokens_per_second": 37.44878878134151,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 14,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "alliance_to_private",
+          "category": "core",
+          "expected_action": {
+            "action": "open_private_chat"
+          },
+          "raw_output": "{\n  \"action\": \"open_private_chat\"\n}",
+          "e2e_ms": 504.167,
+          "ttfb_ms": 504.15,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 16,
+            "prompt_tokens": 592,
+            "total_tokens": 608,
+            "prompt_tokens_details": {
+              "cached_tokens": 479
+            }
+          },
+          "timings": {
+            "cache_n": 479,
+            "prompt_n": 113,
+            "prompt_ms": 99.895,
+            "prompt_per_token_ms": 0.8840265486725664,
+            "prompt_per_second": 1131.1877471344912,
+            "predicted_n": 16,
+            "predicted_ms": 401.239,
+            "predicted_per_token_ms": 26.749266666666664,
+            "predicted_per_second": 37.384202432963896
+          },
+          "metrics_delta": {
+            "prompt_tokens": 113.0,
+            "prompt_seconds": 0.09948999999999986,
+            "generation_tokens": 16.0,
+            "generation_seconds": 0.4012399999999996
+          },
+          "prompt_tokens_per_second": 1131.1877471344912,
+          "generation_tokens_per_second": 37.384202432963896,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 15,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "world_private_and_chat_priority",
+          "category": "contradictory-signals",
+          "expected_action": {
+            "action": "open_chat"
+          },
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "e2e_ms": 363.499,
+          "ttfb_ms": 363.485,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 578,
+            "total_tokens": 589,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 110,
+            "prompt_ms": 93.055,
+            "prompt_per_token_ms": 0.8459545454545455,
+            "prompt_per_second": 1182.096609531997,
+            "predicted_n": 11,
+            "predicted_ms": 267.303,
+            "predicted_per_token_ms": 26.7303,
+            "predicted_per_second": 37.41072864876189
+          },
+          "metrics_delta": {
+            "prompt_tokens": 110.0,
+            "prompt_seconds": 0.09251000000000031,
+            "generation_tokens": 11.0,
+            "generation_seconds": 0.26731000000000016
+          },
+          "prompt_tokens_per_second": 1182.096609531997,
+          "generation_tokens_per_second": 37.41072864876189,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": false,
+            "calculated_after": false,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 16,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "world_private_first_tick",
+          "category": "stateful-memory",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 327.624,
+          "ttfb_ms": 327.609,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 578,
+            "total_tokens": 588,
+            "prompt_tokens_details": {
+              "cached_tokens": 486
+            }
+          },
+          "timings": {
+            "cache_n": 486,
+            "prompt_n": 92,
+            "prompt_ms": 82.819,
+            "prompt_per_token_ms": 0.9002065217391305,
+            "prompt_per_second": 1110.856204494138,
+            "predicted_n": 10,
+            "predicted_ms": 241.719,
+            "predicted_per_token_ms": 26.857666666666667,
+            "predicted_per_second": 37.23331637148921
+          },
+          "metrics_delta": {
+            "prompt_tokens": 92.0,
+            "prompt_seconds": 0.0822099999999999,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24171999999999993
+          },
+          "prompt_tokens_per_second": 1110.856204494138,
+          "generation_tokens_per_second": 37.23331637148921,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 17,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "category": "core",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 344.87,
+          "ttfb_ms": 344.859,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 592,
+            "total_tokens": 602,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 124,
+            "prompt_ms": 99.793,
+            "prompt_per_token_ms": 0.8047822580645162,
+            "prompt_per_second": 1242.5721242972952,
+            "predicted_n": 10,
+            "predicted_ms": 241.966,
+            "predicted_per_token_ms": 26.88511111111111,
+            "predicted_per_second": 37.19530843176314
+          },
+          "metrics_delta": {
+            "prompt_tokens": 124.0,
+            "prompt_seconds": 0.0992099999999998,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24195999999999973
+          },
+          "prompt_tokens_per_second": 1242.5721242972952,
+          "generation_tokens_per_second": 37.19530843176314,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": false,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 18,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "conversation_reply_private_unavailable",
+          "category": "reply-pipeline",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 340.834,
+          "ttfb_ms": 340.821,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 579,
+            "total_tokens": 589,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 111,
+            "prompt_ms": 94.205,
+            "prompt_per_token_ms": 0.8486936936936936,
+            "prompt_per_second": 1178.2814075686003,
+            "predicted_n": 10,
+            "predicted_ms": 243.601,
+            "predicted_per_token_ms": 27.066777777777776,
+            "predicted_per_second": 36.94566114260615
+          },
+          "metrics_delta": {
+            "prompt_tokens": 111.0,
+            "prompt_seconds": 0.09349000000000007,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24359999999999982
+          },
+          "prompt_tokens_per_second": 1178.2814075686003,
+          "generation_tokens_per_second": 36.94566114260615,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 19,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "category": "core",
+          "expected_action": {
+            "action": "open_chat"
+          },
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}",
+          "e2e_ms": 471.896,
+          "ttfb_ms": 471.884,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 15,
+            "prompt_tokens": 578,
+            "total_tokens": 593,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 110,
+            "prompt_ms": 93.363,
+            "prompt_per_token_ms": 0.8487545454545454,
+            "prompt_per_second": 1178.1969302614527,
+            "predicted_n": 15,
+            "predicted_ms": 375.628,
+            "predicted_per_token_ms": 26.830571428571428,
+            "predicted_per_second": 37.27091697104582
+          },
+          "metrics_delta": {
+            "prompt_tokens": 110.0,
+            "prompt_seconds": 0.09282000000000012,
+            "generation_tokens": 15.0,
+            "generation_seconds": 0.37563000000000013
+          },
+          "prompt_tokens_per_second": 1178.1969302614527,
+          "generation_tokens_per_second": 37.27091697104582,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": false,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 20,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "world_idle",
+          "category": "core",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 338.632,
+          "ttfb_ms": 338.608,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 578,
+            "total_tokens": 588,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 110,
+            "prompt_ms": 92.984,
+            "prompt_per_token_ms": 0.8453090909090909,
+            "prompt_per_second": 1182.9992256732342,
+            "predicted_n": 10,
+            "predicted_ms": 242.551,
+            "predicted_per_token_ms": 26.95011111111111,
+            "predicted_per_second": 37.10559841023125
+          },
+          "metrics_delta": {
+            "prompt_tokens": 110.0,
+            "prompt_seconds": 0.09229999999999983,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.2425500000000005
+          },
+          "prompt_tokens_per_second": 1182.9992256732342,
+          "generation_tokens_per_second": 37.10559841023125,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": false,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 21,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "category": "core",
+          "expected_action": {
+            "action": "open_chat"
+          },
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "e2e_ms": 377.742,
+          "ttfb_ms": 377.727,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 578,
+            "total_tokens": 589,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 110,
+            "prompt_ms": 92.388,
+            "prompt_per_token_ms": 0.8398909090909091,
+            "prompt_per_second": 1190.6308178551326,
+            "predicted_n": 11,
+            "predicted_ms": 268.675,
+            "predicted_per_token_ms": 26.8675,
+            "predicted_per_second": 37.21968921559505
+          },
+          "metrics_delta": {
+            "prompt_tokens": 110.0,
+            "prompt_seconds": 0.09186000000000005,
+            "generation_tokens": 11.0,
+            "generation_seconds": 0.2686799999999998
+          },
+          "prompt_tokens_per_second": 1190.6308178551326,
+          "generation_tokens_per_second": 37.21968921559505,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 22,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "unsupported_screen_safe_wait",
+          "category": "unknown",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 336.526,
+          "ttfb_ms": 336.508,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 568,
+            "total_tokens": 578,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 100,
+            "prompt_ms": 91.652,
+            "prompt_per_token_ms": 0.91652,
+            "prompt_per_second": 1091.0836642953782,
+            "predicted_n": 10,
+            "predicted_ms": 242.025,
+            "predicted_per_token_ms": 26.891666666666666,
+            "predicted_per_second": 37.18624109079641
+          },
+          "metrics_delta": {
+            "prompt_tokens": 100.0,
+            "prompt_seconds": 0.0910899999999999,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24202000000000012
+          },
+          "prompt_tokens_per_second": 1091.0836642953782,
+          "generation_tokens_per_second": 37.18624109079641,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": false,
+            "calculated_after": false,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 23,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "category": "core",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 376.438,
+          "ttfb_ms": 376.425,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 609,
+            "total_tokens": 619,
+            "prompt_tokens_details": {
+              "cached_tokens": 468
+            }
+          },
+          "timings": {
+            "cache_n": 468,
+            "prompt_n": 141,
+            "prompt_ms": 131.356,
+            "prompt_per_token_ms": 0.9316028368794326,
+            "prompt_per_second": 1073.418800816103,
+            "predicted_n": 10,
+            "predicted_ms": 241.835,
+            "predicted_per_token_ms": 26.870555555555555,
+            "predicted_per_second": 37.215456819732466
+          },
+          "metrics_delta": {
+            "prompt_tokens": 141.0,
+            "prompt_seconds": 0.13080000000000025,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.24183999999999983
+          },
+          "prompt_tokens_per_second": 1073.418800816103,
+          "generation_tokens_per_second": 37.215456819732466,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": null,
+            "calculated_after": false,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 24,
+          "random_seed": 20261010
+        }
+      ],
+      "summary": {
+        "cold_first_hit": {
+          "case_id": "world_private_repeated_tick",
+          "category": "stateful-memory",
+          "expected_action": {
+            "action": "wait"
+          },
+          "raw_output": "{\"action\":\"wait\"}",
+          "e2e_ms": 701.181,
+          "ttfb_ms": 701.167,
+          "ttft_ms": null,
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 578,
+            "total_tokens": 588,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 578,
+            "prompt_ms": 437.579,
+            "prompt_per_token_ms": 0.7570570934256056,
+            "prompt_per_second": 1320.9043395592566,
+            "predicted_n": 10,
+            "predicted_ms": 246.281,
+            "predicted_per_token_ms": 27.364555555555555,
+            "predicted_per_second": 36.54362293477775
+          },
+          "metrics_delta": {
+            "prompt_tokens": 578.0,
+            "prompt_seconds": 0.43679,
+            "generation_tokens": 10.0,
+            "generation_seconds": 0.246281
+          },
+          "prompt_tokens_per_second": 1320.9043395592566,
+          "generation_tokens_per_second": 36.54362293477775,
+          "validation": {
+            "valid_json": true,
+            "schema_valid": true,
+            "legal_action": true,
+            "exact_match": true,
+            "selector_message_free": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "memory_contract": {
+            "expected_after": true,
+            "calculated_after": true,
+            "matches_fixture": true
+          },
+          "error": null,
+          "phase": "cold_first_hit"
+        },
+        "warm": {
+          "requests": 24,
+          "valid_json_rate": 1.0,
+          "schema_valid_rate": 1.0,
+          "legal_action_rate": 1.0,
+          "exact_match_rate": 0.875,
+          "selector_message_free_rate": 1.0,
+          "memory_fixture_contract_rate": 1.0,
+          "errors": 0,
+          "end_to_end_ms": {
+            "n": 24,
+            "min": 294.352,
+            "mean": 376.053,
+            "p50": 342.852,
+            "p95": 500.269,
+            "p99": 503.975,
+            "max": 504.167
+          },
+          "ttfb_ms": {
+            "n": 24,
+            "min": 294.337,
+            "mean": 376.038,
+            "p50": 342.84,
+            "p95": 500.255,
+            "p99": 503.958,
+            "max": 504.15
+          },
+          "prompt_tokens_per_second": {
+            "n": 24,
+            "min": 600.352,
+            "mean": 1114.122,
+            "p50": 1154.024,
+            "p95": 1235.194,
+            "p99": 1242.706,
+            "max": 1242.746
+          },
+          "generation_tokens_per_second": {
+            "n": 24,
+            "min": 36.859,
+            "mean": 37.206,
+            "p50": 37.218,
+            "p95": 37.43,
+            "p99": 37.445,
+            "max": 37.449
+          }
+        },
+        "production_qualification": {
+          "valid_json_rate": 1.0,
+          "schema_valid_rate": 1.0,
+          "legal_action_rate": 1.0,
+          "exact_match_rate": 0.875,
+          "cold_first_hit_pass": true,
+          "qualified": false
+        }
+      },
+      "error": null
+    }
+  ],
+  "recommendations": {
+    "action_production_configuration": null,
+    "chat_production_configuration": null,
+    "action_qualified_count": 0,
+    "chat_qualified_count": 0,
+    "meta_reasoning_leakage_observed": false,
+    "chat_recommendation_status": "eligible candidates were ranked by quality, then TTFT and generation speed"
+  }
+}

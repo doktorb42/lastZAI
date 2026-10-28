@@ -1,0 +1,69 @@
+# Wirtualne srodowiska
+.venv*/
+venv*/
+env/
+node_modules/
+__pycache__/
+*.pyc
+
+# Build
+bin/
+archive/
+obj/
+data/
+dist/
+lastz_model_benchmark/training/models/
+build/
+.next/
+patch/
+target/
+
+# Lokalne
+.vscode/
+.peva_ocr_env/
+android/
+apk/
+trening/
+
+# Sekrety
+.env
+.env.*
+*.pem
+
+# Modele i duze pliki
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+*.npy
+*.parquet
+
+# Logi, wyniki
+*.log
+checkpoints/
+outputs/
+runs/
+wandb/
+# Wygenerowane i cudze pliki
+cache/
+tools/il2cppdumper/
+# Potencjalnie prywatne dane
+docs/evidence/
+benchmarks/peva_private*
+
+# lastz_model_benchmark: bez modeli i binariow
+lastz_model_benchmark/models/
+lastz_model_benchmark/runtime/
+lastz_model_benchmark/.codex/
+*.zip
+*.exe
+*.dll
+# Mozliwe dane prywatne
+*.jsonl
+*.db
+*.sqlite
+*.sqlite3

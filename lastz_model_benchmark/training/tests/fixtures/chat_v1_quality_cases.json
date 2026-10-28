@@ -1,0 +1,129 @@
+{
+  "failure_cases": [
+    {
+      "id": "observed_program_disclaimer",
+      "candidate": "Hello! I'm just a computer program, so I don't have feelings. How can I assist you today?",
+      "source_record": {"reply_expected": true},
+      "expected_categories": ["generic_assistant_tone", "support_agent_language", "self_identifies_as_program", "denies_normal_persona", "unnatural_followup"]
+    },
+    {
+      "id": "program_variant",
+      "candidate": "I'm just a program, so I don't have feelings. How may I help you?",
+      "source_record": {"reply_expected": true},
+      "expected_categories": ["generic_assistant_tone", "support_agent_language", "self_identifies_as_program", "denies_normal_persona", "unnatural_followup"]
+    },
+    {
+      "id": "observed_program_but_thanks",
+      "candidate": "I'm just a computer program, but thank you! How about you?",
+      "source_record": {"reply_expected": true},
+      "expected_categories": ["generic_assistant_tone", "self_identifies_as_program"]
+    },
+    {
+      "id": "ai_disclaimer",
+      "candidate": "As an AI, I don't have feelings. How can I assist you?",
+      "source_record": {"reply_expected": true},
+      "expected_categories": ["generic_assistant_tone", "support_agent_language", "self_identifies_as_ai", "denies_normal_persona", "unnatural_followup"]
+    },
+    {
+      "id": "support_agent_formula",
+      "candidate": "I'd be happy to help. Is there anything else I can assist you with?",
+      "source_record": {"reply_expected": true},
+      "expected_categories": ["generic_assistant_tone", "support_agent_language", "unnatural_followup"]
+    },
+    {
+      "id": "formal_help_formula",
+      "candidate": "Of course! How can I help?",
+      "source_record": {"reply_expected": true},
+      "expected_categories": ["generic_assistant_tone", "support_agent_language", "unnatural_followup", "excessive_formality"]
+    },
+    {
+      "id": "certainly_single_word",
+      "candidate": "Certainly!",
+      "source_record": {"reply_expected": true},
+      "expected_categories": ["excessive_formality"]
+    },
+    {
+      "id": "empty_reply_expected",
+      "candidate": "",
+      "source_record": {"reply_expected": true},
+      "expected_categories": ["empty_reply_when_reply_expected"]
+    }
+  ],
+  "natural_pass_cases": [
+    {"id": "greeting_hey", "candidate": "hey", "source_record": {"reply_expected": true}},
+    {"id": "greeting_bro", "candidate": "hey bro", "source_record": {"reply_expected": true}},
+    {"id": "greeting_yo", "candidate": "yo", "source_record": {"reply_expected": true}},
+    {"id": "how_are_you", "candidate": "doing good haha, you?", "source_record": {"reply_expected": true}},
+    {"id": "doing_good", "candidate": "yep, all good", "source_record": {"reply_expected": true}},
+    {"id": "im_fine", "candidate": "good to hear 😄", "source_record": {"reply_expected": true}},
+    {"id": "coordination_not_support_tone", "candidate": "yeah, what do you need for Tyrant?", "source_record": {"reply_expected": true, "grounding": "The upcoming event is Tyrant."}}
+  ],
+  "continuity_cases": [
+    {
+      "id": "two_turn_generic_reset",
+      "candidate": "Hello! How can I assist you today?",
+      "source_record": {
+        "reply_expected": true,
+        "current_player_message": "how are you?",
+        "conversation_history": [
+          {"role": "player", "content": "hello"},
+          {"role": "assistant", "content": "hey bro"}
+        ]
+      },
+      "expected_categories": ["generic_assistant_tone", "support_agent_language", "unnatural_followup", "conversation_reset"]
+    },
+    {
+      "id": "five_turn_reintroduction",
+      "candidate": "Nice to meet you, I'm PEva.",
+      "source_record": {
+        "reply_expected": true,
+        "current_player_message": "i'm fine",
+        "conversation_history": [
+          {"role": "player", "content": "hello"},
+          {"role": "assistant", "content": "hey bro"},
+          {"role": "player", "content": "how are you?"},
+          {"role": "assistant", "content": "doing good haha, you?"}
+        ]
+      },
+      "expected_categories": ["conversation_reset"]
+    },
+    {
+      "id": "four_turn_support_reset_observed",
+      "candidate": "Great to hear that! How can I assist you further?",
+      "source_record": {
+        "reply_expected": true,
+        "current_player_message": "i'm fine",
+        "conversation_history": [
+          {"role": "player", "content": "hello"},
+          {"role": "assistant", "content": "hey bro"},
+          {"role": "player", "content": "how are you?"},
+          {"role": "assistant", "content": "good, you?"},
+          {"role": "player", "content": "doing good?"},
+          {"role": "assistant", "content": "yeah haha"}
+        ]
+      },
+      "expected_categories": ["generic_assistant_tone", "support_agent_language", "unnatural_followup", "conversation_reset"]
+    },
+    {
+      "id": "five_turn_natural_continuity",
+      "candidate": "that's good",
+      "source_record": {
+        "reply_expected": true,
+        "current_player_message": "i'm fine",
+        "conversation_history": [
+          {"role": "player", "content": "hello"},
+          {"role": "assistant", "content": "hey bro"},
+          {"role": "player", "content": "how are you?"},
+          {"role": "assistant", "content": "doing good haha, you?"}
+        ]
+      },
+      "expected_categories": []
+    },
+    {
+      "id": "short_social_overanswer",
+      "candidate": "Hey, I'm doing really well today and I wanted to share a long detailed update about every single thing that happened in the game before we even say hi to each other and explain why the whole plan matters for everyone online tonight too.",
+      "source_record": {"reply_expected": true, "short_social_turn": true, "current_player_message": "hello"},
+      "expected_errors": ["overlong_reply_for_short_social_turn"]
+    }
+  ]
+}

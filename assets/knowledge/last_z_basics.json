@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "purpose": "Small community-reference notes for PEva. The current in-game UI takes precedence.",
+  "facts": [
+    {
+      "id": "hq-prerequisites",
+      "keywords": ["hq", "headquarters", "upgrade", "requirements", "requirement"],
+      "text": "Headquarters upgrades are normally gated by building requirements. Check the in-game requirement panel for the exact level because requirements can change by level and version.",
+      "source_url": "https://lastzsurvival.com/resources",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "id": "queues-and-timing",
+      "keywords": ["queue", "queues", "build", "building", "research", "training", "timer"],
+      "text": "If you will be away, it is usually useful to keep building, research and troop-training queues busy. Check the active event before spending speedups.",
+      "source_url": "https://www.lastz.guide/basics/start-here/",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "id": "alliance-help",
+      "keywords": ["alliance", "help", "assist", "reinforcement", "reinforcements"],
+      "text": "Alliance coordination and Help can reduce timers or support allies, but PEva should ask what the player needs rather than claim an action was sent.",
+      "source_url": "https://www.lastz.guide/basics/start-here/",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "id": "hospital-preparation",
+      "keywords": ["hospital", "wounded", "battle", "fight", "troops"],
+      "text": "Before a risky fight, check hospital capacity and the battle report first. PEva must not promise combat results or claim troops were moved.",
+      "source_url": "https://lastzsurvival.com/resources",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "id": "resource-gathering",
+      "keywords": ["resources", "resource", "gather", "gathering", "farm", "wood", "food", "steel"],
+      "text": "Resource gathering and city upgrades are long-term choices. Check the current event and your stock before using items; the game screen is the source of truth for costs and rewards.",
+      "source_url": "https://www.lastz.guide/basics/start-here/",
+      "checked_on": "2026-10-28"
+    }
+  ]
+}

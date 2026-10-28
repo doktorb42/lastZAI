@@ -1,0 +1,8 @@
+{
+  "runtime": {
+    "player_loop": true,
+    "private_only": true,
+    "auto_send": true,
+    "record_player_loop": true
+  }
+}

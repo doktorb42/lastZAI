@@ -1,0 +1,47 @@
+{
+  "experiment": "lastz-qwen2.5-3b-action-v1",
+  "phase": "action_v1",
+  "model": {
+    "training_model_id": "unsloth/Qwen2.5-3B-Instruct-unsloth-bnb-4bit",
+    "training_revision": "21d7790b1332196a5cf65ba72f2b46b659f74ddf",
+    "merge_model_id": "unsloth/Qwen2.5-3B-Instruct",
+    "merge_revision": "7548fff1f997f57b2e9e8ab1ec7be96949b00ed0",
+    "load_in_4bit": true,
+    "max_seq_length": 1024
+  },
+  "dataset": {
+    "train_path": "data/processed/action_v1_train.jsonl",
+    "validation_path": "data/processed/action_v1_validation.jsonl",
+    "quality_gate_path": "data/processed/action_v1_quality_gate.json",
+    "holdout_is_forbidden": true
+  },
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.0,
+    "bias": "none",
+    "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    "use_gradient_checkpointing": "unsloth",
+    "use_rslora": false
+  },
+  "training": {
+    "seed": 20261010,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 16,
+    "learning_rate": 0.0001,
+    "warmup_ratio": 0.05,
+    "num_train_epochs": 2,
+    "logging_steps": 5,
+    "save_strategy": "epoch",
+    "evaluation_strategy": "epoch",
+    "packing": false,
+    "completion_only_loss": true
+  },
+  "safety": {
+    "require_cuda": true,
+    "smoke_steps": 10,
+    "action_max_new_tokens": 24,
+    "no_raw_coordinates": true,
+    "no_send_message_from_action_model": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "models": {
+    "peva": {
+      "name": "PEva",
+      "path": "lastz_model_benchmark/training/outputs/gguf/base-q6-v2/qwen2.5-3b-instruct-base-Q6_K.gguf",
+      "role": "chat"
+    }
+  }
+}

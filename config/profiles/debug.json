@@ -1,0 +1,10 @@
+{
+  "runtime": {
+    "auto_send": false,
+    "social_debug": true
+  },
+  "logging": {
+    "navigation": true,
+    "observations": true
+  }
+}

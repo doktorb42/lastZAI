@@ -1,0 +1,71 @@
+# PEva Training Stage 1: training and final inference quantization are distinct.
+# Training is 4-bit NF4 QLoRA over the pinned Transformers checkpoint.  A GGUF
+# is never a training input.  The required final inference target is Q6_K.
+run_name: peva-qwen25-7b-v1
+base_model:
+  id: Qwen/Qwen2.5-7B-Instruct
+  revision: a09a35458c702b33eeacc393d103063234e8bc28
+  tokenizer_id: Qwen/Qwen2.5-7B-Instruct
+  chat_template: tokenizer.apply_chat_template
+  training_format: transformers
+  gguf_training_forbidden: true
+dataset:
+  audit_command: py training_dataset_audit.py --require-pass
+  required_release: data/training/releases/peva_private_v1_001
+  reply_train: reply_train.jsonl
+  decision_train: decision_train.jsonl
+  benchmark: benchmarks/peva_private_v1.json
+  benchmark_sha256: benchmarks/peva_private_v1.sha256
+qlora:
+  load_in_4bit: true
+  quant_type: nf4
+  double_quant: true
+  compute_dtype_preference: bfloat16
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+final_inference:
+  required_quantization: Q6_K
+  required_filename: PEva-Qwen2.5-7B-Instruct-Q6_K.gguf
+  source_pipeline:
+    - Qwen2.5-7B-Instruct HF safetensors at the pinned revision
+    - 4-bit NF4 QLoRA adapter
+    - merge adapter with the same HF base
+    - convert merged model to F16 GGUF
+    - quantize F16 GGUF directly to Q6_K
+  gguf_training_forbidden: true
+  q4_k_m_role: optional_comparison_only
+  final_acceptance_requires:
+    - base_q6_k_benchmark_on_frozen_peva_private_v1
+    - fine_tuned_q6_k_benchmark_on_same_frozen_peva_private_v1
+    - q6_k_gguf_file_size_and_load_success
+    - rtx_3050_8gb_vram_context_and_offload_measurement
+smoke:
+  max_seq_length: 768
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 0.0001
+  warmup_ratio: 0.03
+  max_steps: 24
+  save_strategy: 'no'
+full:
+  max_seq_length: 1024
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 16
+  learning_rate: 0.0001
+  warmup_ratio: 0.03
+  num_train_epochs: 2
+  save_steps: 100
+  logging_steps: 5
+runtime_safety:
+  preserve_action_claim_guard: true
+  automatic_production_replacement: forbidden
+  merge_or_gguf_conversion: only_after_full_training_gate_and_evaluation

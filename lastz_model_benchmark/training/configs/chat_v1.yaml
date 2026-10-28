@@ -1,0 +1,127 @@
+{
+  "experiment": "peva-qwen2.5-3b-chat-v1",
+  "phase": "chat_v1_dataset_preparation_then_gated_qlora",
+  "blocked_until": "chat_v1_readiness.py prints CHAT V1 TRAINING READY; this config never starts training by itself.",
+  "model": {
+    "training_model_id": "unsloth/Qwen2.5-3B-Instruct-unsloth-bnb-4bit",
+    "training_revision": "21d7790b1332196a5cf65ba72f2b46b659f74ddf",
+    "merge_model_id": "unsloth/Qwen2.5-3B-Instruct",
+    "merge_revision": "7548fff1f997f57b2e9e8ab1ec7be96949b00ed0",
+    "max_seq_length": 2048,
+    "load_in_4bit": true,
+    "no_silent_prompt_truncation": true,
+    "rationale": "The canonical V2 TASK_CHAT JSON can exceed Action V1's 1024-token budget. 2048 is the first pilot setting; token-length reporting and the CUDA smoke run must be reviewed before reducing it."
+  },
+  "dataset": {
+    "source_queue_path": "data/raw/chat_v1_source_queue.jsonl",
+    "validated_path": "data/reviewed/chat_v1_validated.jsonl",
+    "leak_checked_path": "data/processed/chat_v1_leak_checked.jsonl",
+    "train_path": "data/processed/chat_v1_train.jsonl",
+    "validation_path": "data/processed/chat_v1_validation.jsonl",
+    "test_path": "data/processed/chat_v1_test.jsonl",
+    "validation_report_path": "data/reports/chat_v1_validation_report.json",
+    "leakage_report_path": "data/reports/chat_v1_benchmark_leakage_report.json",
+    "quality_gate_path": "data/processed/chat_v1_quality_gate.json",
+    "manual_review_required": true,
+    "only_explicitly_approved_replies": true,
+    "max_characters": 950,
+    "require_straight_apostrophes": true,
+    "language": "English",
+    "protected_test_never_enters_trainer": true
+  },
+  "source_record_contract": {
+    "version": "peva-chat-v1-source-record-v1",
+    "input_task": "<TASK_CHAT>",
+    "input_prompt_version": "peva-chat-input-v2",
+    "input_context_version": "peva-conversation-context-v2",
+    "allowed_source_types": ["real_approved", "manually_authored", "synthetic_candidate"],
+    "draft_and_approved_reply_are_separate": true,
+    "approved_reply_length_band_required": true,
+    "group_aliases_only": true
+  },
+  "length_bands_words": {
+    "micro_social": [1, 4],
+    "very_short": [5, 20],
+    "short": [15, 35],
+    "medium": [35, 70],
+    "occasional_long": [70, 120]
+  },
+  "quality_gates": {
+    "reject_meta_reasoning": true,
+    "reject_unsupported_facts": true,
+    "player_ready_only": true,
+    "reject_assistant_like_tone": true,
+    "reject_support_agent_language": true,
+    "reject_self_identifies_as_ai_or_program": true,
+    "reject_conversation_resets": true,
+    "reject_empty_reply_when_reply_expected": true,
+    "allow_contextual_plain_conversational_words": true
+  },
+  "split": {
+    "validation_ratio": 0.1,
+    "test_ratio": 0.1,
+    "seed": 20261014,
+    "group_algorithm": "connected_component(player_group,thread_group,variant_group)",
+    "no_player_or_thread_cross_split": true
+  },
+  "readiness": {
+    "minimum_approved_valid_rows": 300,
+    "target_pilot_rows": 500,
+    "required_categories": [
+      "casual_greeting",
+      "casual_conversation",
+      "alliance_coordination",
+      "event_discussion",
+      "strategy_game",
+      "scheduling",
+      "humor_teasing",
+      "short_reaction",
+      "disagreement_conflict",
+      "clarification",
+      "unknown_information"
+    ],
+    "required_length_bands": [
+      "micro_social",
+      "very_short",
+      "short",
+      "medium",
+      "occasional_long"
+    ]
+  },
+  "action_v1_baseline": {
+    "comparison_report_path": "outputs/reports/action_v1_full_holdout_comparison.json",
+    "must_remain_independent": true,
+    "required_production_qualification": "schema_valid=legal_action=exact_decision=100%"
+  },
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "bias": "none",
+    "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    "use_gradient_checkpointing": "unsloth",
+    "use_rslora": false,
+    "rationale": "A small reviewed corpus benefits from modest regularization; unlike Action V1, Chat V1 starts below 1e-4 and must preserve natural tone."
+  },
+  "training": {
+    "seed": 20261014,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 16,
+    "learning_rate": 0.00005,
+    "warmup_ratio": 0.05,
+    "num_train_epochs": 3,
+    "logging_steps": 5,
+    "save_strategy": "epoch",
+    "evaluation_strategy": "epoch",
+    "optimizer": "adamw_8bit",
+    "packing": false,
+    "completion_only_loss": true
+  },
+  "safety": {
+    "require_cuda": true,
+    "no_cpu_fallback": true,
+    "no_action_v1_adapter_overwrite": true,
+    "no_memory_v1_training": true,
+    "no_game_or_bluestacks_interaction": true
+  }
+}

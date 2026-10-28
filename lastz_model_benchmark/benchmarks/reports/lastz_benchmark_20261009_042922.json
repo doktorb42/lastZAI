@@ -1,0 +1,2183 @@
+{
+  "started_at": "2026-10-09T04:28:21+02:00",
+  "project_root": "D:\\projekty\\lastZAI\\lastz_model_benchmark",
+  "configuration": {
+    "cases": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\cases\\decision_cases.jsonl",
+    "iterations_per_case": 5,
+    "warmup_requests": 2,
+    "context_tokens": 2048,
+    "gpu_layers": 99,
+    "threads": 16,
+    "max_output_tokens": 24,
+    "json_schema": true,
+    "reasoning_disabled": true,
+    "server": "C:\\Users\\doktorb\\AppData\\Local\\Microsoft\\WinGet\\Packages\\ggml.llamacpp_Microsoft.Winget.Source_8wekyb3d8bbwe\\llama-server.EXE"
+  },
+  "results": [
+    {
+      "model": {
+        "id": "qwen2.5-3b-instruct-q4-k-m",
+        "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\qwen2.5-3b-instruct-q4_k_m.gguf",
+        "size_bytes": 2104932768,
+        "manifest": {
+          "id": "qwen2.5-3b-instruct-q4-k-m",
+          "filename": "qwen2.5-3b-instruct-q4_k_m.gguf",
+          "tier": "speed-baseline",
+          "parameters": "3B",
+          "quantization": "Q4_K_M",
+          "license": "Qwen Research License",
+          "source_repository": "Qwen/Qwen2.5-3B-Instruct-GGUF",
+          "source_url": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF",
+          "size_bytes": 2104932768,
+          "sha256": "626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+          "reason": "Smallest robust local baseline for instruction following and JSON; it is likely to be the fastest viable option on this PC.",
+          "download": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/resolve/main/qwen2.5-3b-instruct-q4_k_m.gguf"
+        }
+      },
+      "command": [
+        "C:\\Users\\doktorb\\AppData\\Local\\Microsoft\\WinGet\\Packages\\ggml.llamacpp_Microsoft.Winget.Source_8wekyb3d8bbwe\\llama-server.EXE",
+        "-m",
+        "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\qwen2.5-3b-instruct-q4_k_m.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "54731",
+        "--ctx-size",
+        "2048",
+        "--gpu-layers",
+        "99",
+        "--threads",
+        "16",
+        "--parallel",
+        "1",
+        "--jinja",
+        "--flash-attn",
+        "auto",
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_log": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\reports\\logs\\qwen2.5-3b-instruct-q4-k-m.log",
+      "startup_seconds": 3.59,
+      "gpu_after_warmup": {
+        "name": "NVIDIA GeForce RTX 3050",
+        "memory_total": "8192 MiB",
+        "memory_used": "3612 MiB",
+        "gpu_utilization": "20 %",
+        "memory_utilization": "9 %",
+        "temperature": "42"
+      },
+      "records": [
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 102.82,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 298,
+            "total_tokens": 305
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 119.64,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 298,
+            "total_tokens": 305
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 127.59,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 298,
+            "total_tokens": 305
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 102.09,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 298,
+            "total_tokens": 305
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 102.35,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 298,
+            "total_tokens": 305
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 2082.49,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 119.96,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 88.9,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 101.61,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 111.08,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 128.59,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 100.43,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 93.58,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 94.2,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 95.74,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 135.69,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 100.22,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 108.97,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 86.11,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 102.37,
+          "raw_output": "{\"action\":\"open_chat\"}",
+          "usage": {
+            "completion_tokens": 7,
+            "prompt_tokens": 297,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 169.9,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 112.85,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 111.19,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 111.85,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 121.21,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 221.68,
+          "raw_output": "{\"action\":\"open_private_person\",\"index\":0}",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 310,
+            "total_tokens": 322
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 177.17,
+          "raw_output": "{\"action\":\"open_private_person\",\"index\":0}",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 310,
+            "total_tokens": 322
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 160.12,
+          "raw_output": "{\"action\":\"open_private_person\",\"index\":0}",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 310,
+            "total_tokens": 322
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 171.31,
+          "raw_output": "{\"action\":\"open_private_person\",\"index\":0}",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 310,
+            "total_tokens": 322
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 174.54,
+          "raw_output": "{\"action\":\"open_private_person\",\"index\":0}",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 310,
+            "total_tokens": 322
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 117.64,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 96.37,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 97.46,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 92.73,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 95.13,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 298,
+            "total_tokens": 304
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 104.39,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 291,
+            "total_tokens": 297
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 87.66,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 291,
+            "total_tokens": 297
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 73.82,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 291,
+            "total_tokens": 297
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 97.99,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 291,
+            "total_tokens": 297
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 93.7,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 291,
+            "total_tokens": 297
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 145.06,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": false,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": [
+              "expected {'action': 'wait'}, got {'action': 'open_private_chat'}"
+            ]
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 118.19,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": false,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": [
+              "expected {'action': 'wait'}, got {'action': 'open_private_chat'}"
+            ]
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 108.94,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": false,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": [
+              "expected {'action': 'wait'}, got {'action': 'open_private_chat'}"
+            ]
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 109.79,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": false,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": [
+              "expected {'action': 'wait'}, got {'action': 'open_private_chat'}"
+            ]
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 112.27,
+          "raw_output": "{\"action\":\"open_private_chat\"}",
+          "usage": {
+            "completion_tokens": 8,
+            "prompt_tokens": 304,
+            "total_tokens": 312
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": false,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": [
+              "expected {'action': 'wait'}, got {'action': 'open_private_chat'}"
+            ]
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 133.99,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 310,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 93.58,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 310,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 96.26,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 310,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 96.56,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 310,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 94.26,
+          "raw_output": "{\"action\":\"wait\"}",
+          "usage": {
+            "completion_tokens": 6,
+            "prompt_tokens": 310,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        }
+      ],
+      "metrics": {
+        "requests": 50,
+        "valid_json_rate": 1.0,
+        "legal_action_rate": 1.0,
+        "exact_match_rate": 0.9,
+        "all_repeats_exact_case_rate": 0.9,
+        "latency_ms": {
+          "min": 73.82,
+          "p50": 106.66,
+          "p95": 175.99,
+          "max": 2082.49,
+          "mean": 154.04
+        },
+        "completion_tokens": 365,
+        "approx_completion_tokens_per_second": 47.39
+      },
+      "error": null
+    },
+    {
+      "model": {
+        "id": "qwen3-4b-q4-k-m",
+        "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Qwen3-4B-Q4_K_M.gguf",
+        "size_bytes": 2497280256,
+        "manifest": {
+          "id": "qwen3-4b-q4-k-m",
+          "filename": "Qwen3-4B-Q4_K_M.gguf",
+          "tier": "preferred",
+          "parameters": "4B",
+          "quantization": "Q4_K_M",
+          "license": "Apache-2.0",
+          "source_repository": "Qwen/Qwen3-4B-GGUF",
+          "source_url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF",
+          "size_bytes": 2497280256,
+          "sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+          "reason": "Current 4B model with agent/tool-use strengths; should fit entirely in 8 GB VRAM while leaving room for the game and KV cache.",
+          "download": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q4_K_M.gguf"
+        }
+      },
+      "command": [
+        "C:\\Users\\doktorb\\AppData\\Local\\Microsoft\\WinGet\\Packages\\ggml.llamacpp_Microsoft.Winget.Source_8wekyb3d8bbwe\\llama-server.EXE",
+        "-m",
+        "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Qwen3-4B-Q4_K_M.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "54828",
+        "--ctx-size",
+        "2048",
+        "--gpu-layers",
+        "99",
+        "--threads",
+        "16",
+        "--parallel",
+        "1",
+        "--jinja",
+        "--flash-attn",
+        "auto",
+        "--reasoning-budget",
+        "0"
+      ],
+      "server_log": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\reports\\logs\\qwen3-4b-q4-k-m.log",
+      "startup_seconds": 4.38,
+      "gpu_after_warmup": {
+        "name": "NVIDIA GeForce RTX 3050",
+        "memory_total": "8192 MiB",
+        "memory_used": "3645 MiB",
+        "gpu_utilization": "100 %",
+        "memory_utilization": "67 %",
+        "temperature": "49"
+      },
+      "records": [
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 225.46,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 298,
+            "total_tokens": 309
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 222.99,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 298,
+            "total_tokens": 309
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 205.0,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 298,
+            "total_tokens": 309
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 204.81,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 298,
+            "total_tokens": 309
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "world_chat_unread",
+          "latency_ms": 204.51,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 298,
+            "total_tokens": 309
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 1921.05,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 222.34,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 207.28,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 219.19,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "hq_chat_unread",
+          "latency_ms": 223.35,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 227.77,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 204.09,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 211.89,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 201.54,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "world_idle",
+          "latency_ms": 203.72,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 259.66,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 206.28,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 231.2,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 231.55,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "chat_priority_over_private",
+          "latency_ms": 245.94,
+          "raw_output": "{\n  \"action\": \"open_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 11,
+            "prompt_tokens": 297,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_chat"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 5388.14,
+          "raw_output": "{\n  \"action\": \"open_private_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 304,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 240.73,
+          "raw_output": "{\n  \"action\": \"open_private_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 304,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 220.28,
+          "raw_output": "{\n  \"action\": \"open_private_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 304,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 233.75,
+          "raw_output": "{\n  \"action\": \"open_private_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 304,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "alliance_to_private",
+          "latency_ms": 236.7,
+          "raw_output": "{\n  \"action\": \"open_private_chat\"\n}\n",
+          "usage": {
+            "completion_tokens": 12,
+            "prompt_tokens": 304,
+            "total_tokens": 316
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_chat"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 377.28,
+          "raw_output": "{\n  \"action\": \"open_private_person\",\n  \"index\": 0\n}\n",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 310,
+            "total_tokens": 329
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 347.68,
+          "raw_output": "{\n  \"action\": \"open_private_person\",\n  \"index\": 0\n}\n",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 310,
+            "total_tokens": 329
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 336.93,
+          "raw_output": "{\n  \"action\": \"open_private_person\",\n  \"index\": 0\n}\n",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 310,
+            "total_tokens": 329
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 346.13,
+          "raw_output": "{\n  \"action\": \"open_private_person\",\n  \"index\": 0\n}\n",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 310,
+            "total_tokens": 329
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "private_list_to_first_person",
+          "latency_ms": 350.7,
+          "raw_output": "{\n  \"action\": \"open_private_person\",\n  \"index\": 0\n}\n",
+          "usage": {
+            "completion_tokens": 19,
+            "prompt_tokens": 310,
+            "total_tokens": 329
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "open_private_person",
+              "index": 0
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 242.18,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 201.97,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 203.18,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 208.36,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "private_conversation_reached",
+          "latency_ms": 208.81,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 298,
+            "total_tokens": 308
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 238.94,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 291,
+            "total_tokens": 301
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 201.01,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 291,
+            "total_tokens": 301
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 202.89,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 291,
+            "total_tokens": 301
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 207.02,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 291,
+            "total_tokens": 301
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "unknown_with_pending_private",
+          "latency_ms": 205.97,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 291,
+            "total_tokens": 301
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 256.36,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 304,
+            "total_tokens": 314
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 202.8,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 304,
+            "total_tokens": 314
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 186.47,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 304,
+            "total_tokens": 314
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 207.42,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 304,
+            "total_tokens": 314
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "alliance_badge_only",
+          "latency_ms": 207.91,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 304,
+            "total_tokens": 314
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 267.22,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 310,
+            "total_tokens": 320
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 1
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 206.87,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 310,
+            "total_tokens": 320
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 2
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 188.07,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 310,
+            "total_tokens": 320
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 3
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 210.31,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 310,
+            "total_tokens": 320
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 4
+        },
+        {
+          "case_id": "private_list_without_pending",
+          "latency_ms": 186.67,
+          "raw_output": "{\n  \"action\": \"wait\"\n}\n",
+          "usage": {
+            "completion_tokens": 10,
+            "prompt_tokens": 310,
+            "total_tokens": 320
+          },
+          "validation": {
+            "valid_json": true,
+            "legal_action": true,
+            "exact_match": true,
+            "parsed": {
+              "action": "wait"
+            },
+            "errors": []
+          },
+          "iteration": 5
+        }
+      ],
+      "metrics": {
+        "requests": 50,
+        "valid_json_rate": 1.0,
+        "legal_action_rate": 1.0,
+        "exact_match_rate": 1.0,
+        "all_repeats_exact_case_rate": 1.0,
+        "latency_ms": {
+          "min": 186.47,
+          "p50": 215.54,
+          "p95": 365.32,
+          "max": 5388.14,
+          "mean": 367.97
+        },
+        "completion_tokens": 570,
+        "approx_completion_tokens_per_second": 30.98
+      },
+      "error": null
+    }
+  ],
+  "recommendation": "qwen3-4b-q4-k-m"
+}

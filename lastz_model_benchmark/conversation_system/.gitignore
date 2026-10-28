@@ -1,0 +1,7 @@
+# Runtime player data can contain private conversation content.
+data/*.sqlite3
+data/*.sqlite3-*
+data/exports/*
+!data/.gitkeep
+!data/exports/.gitkeep
+

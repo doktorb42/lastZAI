@@ -1,0 +1,45 @@
+git reset
+del /f /q .gitignore .gitignore.txt _gitignore 2>nul
+(
+echo # Wirtualne srodowiska
+echo .venv*/
+echo venv*/
+echo env/
+echo node_modules/
+echo __pycache__/
+echo *.pyc
+echo # Build
+echo bin/
+echo obj/
+echo dist/
+echo build/
+echo .next/
+echo target/
+echo # Lokalne
+echo .vscode/
+echo .peva_ocr_env/
+echo android/
+echo apk/
+echo trening/
+echo # Sekrety
+echo .env
+echo .env.*
+echo *.pem
+echo # Modele i duze pliki
+echo *.gguf
+echo *.safetensors
+echo *.bin
+echo *.pt
+echo *.pth
+echo *.ckpt
+echo *.onnx
+echo *.h5
+echo *.npy
+echo *.parquet
+echo # Logi, wyniki
+echo *.log
+echo checkpoints/
+echo outputs/
+echo runs/
+echo wandb/
+) > .gitignore

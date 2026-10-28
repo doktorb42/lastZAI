@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "default_candidate": "qwen2_5_3b_unsloth_bnb_4bit_action_v1",
+  "notes": "The default is the approved Action V1 QLoRA training checkpoint, not a production-model winner. Production promotion still requires the separate evaluation gates.",
+  "candidates": {
+    "qwen2_5_3b_unsloth_bnb_4bit_action_v1": {
+      "display_name": "Qwen2.5-3B-Instruct Unsloth Dynamic 4-bit (Action V1 QLoRA)",
+      "hf_repo": "unsloth/Qwen2.5-3B-Instruct-unsloth-bnb-4bit",
+      "revision": "21d7790b1332196a5cf65ba72f2b46b659f74ddf",
+      "training_format": "transformers",
+      "allow_gguf_training": false,
+      "expected_license": "Qwen Research License (upstream governing licence)",
+      "card_license": "apache-2.0",
+      "license_note": "The Unsloth model card reports apache-2.0, but this pipeline treats the upstream Qwen Research License as governing. Confirm intended use against the upstream licence before any deployment.",
+      "intended_phases": [
+        "action_lora_v1"
+      ],
+      "required_remote_files": [
+        "config.json",
+        "tokenizer_config.json"
+      ],
+      "download_allow_patterns": [
+        "*.json",
+        "*.safetensors",
+        "*.model",
+        "*.tiktoken",
+        "*.txt",
+        "*.jinja",
+        "*.py",
+        "LICENSE*",
+        "README*"
+      ],
+      "selection_status": "selected_for_action_v1_qlora_only",
+      "rationale": "Pinned dynamic 4-bit checkpoint selected for the initial Action V1 QLoRA experiment on the documented RTX 3050 8 GB environment. This is not a production recommendation and must pass the separate evaluation gates.",
+      "merge_source": {
+        "hf_repo": "unsloth/Qwen2.5-3B-Instruct",
+        "revision": "7548fff1f997f57b2e9e8ab1ec7be96949b00ed0"
+      },
+      "upstream_provenance": {
+        "hf_repo": "Qwen/Qwen2.5-3B-Instruct",
+        "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+      }
+    }
+  }
+}

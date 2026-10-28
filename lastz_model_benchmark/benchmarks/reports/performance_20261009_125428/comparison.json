@@ -1,0 +1,1702 @@
+{
+  "schema_version": 3,
+  "started_at": "2026-10-09T12:54:28+02:00",
+  "run_directory": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\reports\\performance_20261009_125428",
+  "bundle_root": "D:\\projekty\\lastZAI\\lastz_model_benchmark",
+  "hardware": {
+    "cpu": "AMD Ryzen 7 5800X",
+    "gpu": "NVIDIA GeForce RTX 3050 8 GB",
+    "ram": "32 GB",
+    "os": "Windows"
+  },
+  "configuration": {
+    "suites": [
+      "chat"
+    ],
+    "action_contexts": [
+      1024,
+      2048,
+      4096
+    ],
+    "chat_contexts": [
+      1024
+    ],
+    "action_rounds": 2,
+    "chat_rounds": 1,
+    "warmup": 1,
+    "cache_modes": [
+      "disabled"
+    ],
+    "gpu_layers_requested": 99,
+    "threads": 16,
+    "chat_modes": [
+      "streaming"
+    ],
+    "max_action_tokens": 24,
+    "reasoning_budget": 0,
+    "backends": [
+      "cuda"
+    ],
+    "seed": 20261009,
+    "minimum_vram_headroom_mib": 1536,
+    "speculative": "off",
+    "normal_chat_character_limit": 950
+  },
+  "backend_inventory": {
+    "probes": {
+      "cuda": "Available devices:\n  CUDA0: NVIDIA GeForce RTX 3050 (8191 MiB, 7196 MiB free)\n"
+    },
+    "targets": [
+      {
+        "backend": "vulkan",
+        "status": "not_requested"
+      },
+      {
+        "requested": "cuda",
+        "server": ".\\lastz_model_benchmark\\runtime\\llama-cpp-cuda-b11430\\llama-server.exe",
+        "device": "CUDA0",
+        "available": true,
+        "reason": "device detected: NVIDIA GeForce RTX 3050 (8191 MiB, 7196 MiB free)"
+      }
+    ]
+  },
+  "action_schema_contract": {
+    "vectors": [
+      {
+        "id": "wait_valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "passed": true,
+        "reason": null
+      },
+      {
+        "id": "reply_private_valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "passed": true,
+        "reason": null
+      },
+      {
+        "id": "person_valid_zero",
+        "expected_valid": true,
+        "actual_valid": true,
+        "passed": true,
+        "reason": null
+      },
+      {
+        "id": "person_missing_index",
+        "expected_valid": false,
+        "actual_valid": false,
+        "passed": true,
+        "reason": "invalid open_private_person object"
+      },
+      {
+        "id": "person_boolean_index",
+        "expected_valid": false,
+        "actual_valid": false,
+        "passed": true,
+        "reason": "invalid open_private_person object"
+      },
+      {
+        "id": "raw_send_rejected",
+        "expected_valid": false,
+        "actual_valid": false,
+        "passed": true,
+        "reason": "unknown selector action"
+      },
+      {
+        "id": "reply_with_text_rejected",
+        "expected_valid": false,
+        "actual_valid": false,
+        "passed": true,
+        "reason": "no-argument action contains extra/missing keys"
+      }
+    ],
+    "passed": 7,
+    "total": 7,
+    "all_passed": true
+  },
+  "delivery_schema_contract": {
+    "vectors": [
+      {
+        "id": "wait_valid",
+        "expected_legal": true,
+        "actual_legal": true,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": null,
+          "legal": true,
+          "executor_payload": {
+            "action": "wait"
+          },
+          "errors": []
+        }
+      },
+      {
+        "id": "person_valid_zero",
+        "expected_legal": true,
+        "actual_legal": true,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": null,
+          "legal": true,
+          "executor_payload": {
+            "action": "open_private_person",
+            "index": 0
+          },
+          "errors": []
+        }
+      },
+      {
+        "id": "person_missing_index",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_boolean_index",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_string_index",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_out_of_range_negative",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_out_of_range_high",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "person_case_restricted_index",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      },
+      {
+        "id": "send_valid",
+        "expected_legal": true,
+        "actual_legal": true,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": true,
+          "legal": true,
+          "executor_payload": {
+            "action": "send_message",
+            "text": "Thanks for the reminder."
+          },
+          "normalization": {
+            "raw_text": "Thanks for the reminder.",
+            "text": "Thanks for the reminder.",
+            "raw_character_count": 24,
+            "character_count": 24,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": []
+        }
+      },
+      {
+        "id": "send_empty",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "",
+            "text": "",
+            "raw_character_count": 0,
+            "character_count": 0,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "invalid send_message schema; text must be a 1-1024 character string"
+          ]
+        }
+      },
+      {
+        "id": "send_whitespace",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "   ",
+            "text": "",
+            "raw_character_count": 3,
+            "character_count": 0,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "normalized message must be nonblank, straight-apostrophe compatible, and <= 1024 characters"
+          ]
+        }
+      },
+      {
+        "id": "send_nonstring",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "",
+            "text": "",
+            "raw_character_count": 0,
+            "character_count": 0,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "invalid send_message schema; text must be a 1-1024 character string"
+          ]
+        }
+      },
+      {
+        "id": "send_1024_valid",
+        "expected_legal": true,
+        "actual_legal": true,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": true,
+          "legal": true,
+          "executor_payload": {
+            "action": "send_message",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          },
+          "normalization": {
+            "raw_text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "raw_character_count": 1024,
+            "character_count": 1024,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": []
+        }
+      },
+      {
+        "id": "send_1025_invalid",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "raw_character_count": 1025,
+            "character_count": 1025,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "invalid send_message schema; text must be a 1-1024 character string"
+          ]
+        }
+      },
+      {
+        "id": "send_extra_key",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": false,
+          "legal": false,
+          "executor_payload": null,
+          "normalization": {
+            "raw_text": "Okay",
+            "text": "Okay",
+            "raw_character_count": 4,
+            "character_count": 4,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "invalid send_message schema; text must be a 1-1024 character string"
+          ]
+        }
+      },
+      {
+        "id": "send_unavailable",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": true,
+          "transport_valid": true,
+          "legal": false,
+          "executor_payload": {
+            "action": "send_message",
+            "text": "Okay"
+          },
+          "normalization": {
+            "raw_text": "Okay",
+            "text": "Okay",
+            "raw_character_count": 4,
+            "character_count": 4,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true
+          },
+          "errors": [
+            "send_message is not authorized by the executor capability descriptor"
+          ]
+        }
+      },
+      {
+        "id": "disabled_action",
+        "expected_legal": false,
+        "actual_legal": false,
+        "passed": true,
+        "validation": {
+          "schema_valid": false,
+          "transport_valid": null,
+          "legal": false,
+          "executor_payload": null,
+          "errors": [
+            "invalid or unauthorized executor action"
+          ]
+        }
+      }
+    ],
+    "passed": 17,
+    "total": 17,
+    "all_passed": true
+  },
+  "send_message_schema": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "enum": [
+          "send_message"
+        ]
+      },
+      "text": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "required": [
+      "action",
+      "text"
+    ],
+    "additionalProperties": false
+  },
+  "results": [
+    {
+      "suite": "chat",
+      "model": {
+        "id": "qwen3-4b-q4-k-m",
+        "path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Qwen3-4B-Q4_K_M.gguf",
+        "size_bytes": 2497280256,
+        "manifest": {
+          "id": "qwen3-4b-q4-k-m",
+          "filename": "Qwen3-4B-Q4_K_M.gguf",
+          "tier": "preferred",
+          "parameters": "4B",
+          "quantization": "Q4_K_M",
+          "license": "Apache-2.0",
+          "source_repository": "Qwen/Qwen3-4B-GGUF",
+          "source_url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF",
+          "size_bytes": 2497280256,
+          "sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+          "reason": "Current 4B model with agent/tool-use strengths; should fit entirely in 8 GB VRAM while leaving room for the game and KV cache.",
+          "benchmark_roles": [
+            "action",
+            "chat"
+          ],
+          "download": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q4_K_M.gguf"
+        }
+      },
+      "backend": {
+        "requested": "cuda",
+        "server": ".\\lastz_model_benchmark\\runtime\\llama-cpp-cuda-b11430\\llama-server.exe",
+        "device": "CUDA0",
+        "available": true,
+        "reason": "device detected: NVIDIA GeForce RTX 3050 (8191 MiB, 7196 MiB free)"
+      },
+      "context": 1024,
+      "cache_mode": "disabled",
+      "speculative": "off",
+      "command": [
+        ".\\lastz_model_benchmark\\runtime\\llama-cpp-cuda-b11430\\llama-server.exe",
+        "-m",
+        "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Qwen3-4B-Q4_K_M.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "53268",
+        "--ctx-size",
+        "1024",
+        "--gpu-layers",
+        "99",
+        "--threads",
+        "16",
+        "--parallel",
+        "1",
+        "--jinja",
+        "--flash-attn",
+        "auto",
+        "--reasoning-budget",
+        "0",
+        "--metrics",
+        "--perf",
+        "--device",
+        "CUDA0",
+        "--no-cache-prompt"
+      ],
+      "server_log": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\reports\\performance_20261009_125428\\logs\\chat_cuda_qwen3-4b-q4-k-m_ctx1024_disabled_off.log",
+      "backend_evidence_log": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\benchmarks\\reports\\performance_20261009_125428\\logs\\chat_cuda_qwen3-4b-q4-k-m_ctx1024_disabled_off_backend_evidence.log",
+      "server_properties": {
+        "default_generation_settings": {
+          "params": {
+            "seed": 4294967295,
+            "temperature": 0.800000011920929,
+            "dynatemp_range": 0.0,
+            "dynatemp_exponent": 1.0,
+            "top_k": 40,
+            "top_p": 0.949999988079071,
+            "min_p": 0.05000000074505806,
+            "top_n_sigma": -1.0,
+            "xtc_probability": 0.0,
+            "xtc_threshold": 0.10000000149011612,
+            "typical_p": 1.0,
+            "repeat_last_n": 64,
+            "repeat_penalty": 1.0,
+            "presence_penalty": 0.0,
+            "frequency_penalty": 0.0,
+            "dry_multiplier": 0.0,
+            "dry_base": 1.75,
+            "dry_allowed_length": 2,
+            "dry_penalty_last_n": 64,
+            "mirostat": 0,
+            "mirostat_tau": 5.0,
+            "mirostat_eta": 0.10000000149011612,
+            "adaptive_target": -1.0,
+            "adaptive_decay": 0.8999999761581421,
+            "max_tokens": -1,
+            "n_predict": -1,
+            "n_keep": 0,
+            "n_discard": 0,
+            "ignore_eos": false,
+            "stream": false,
+            "n_probs": 0,
+            "min_keep": 0,
+            "chat_format": "Content-only",
+            "reasoning_format": "none",
+            "reasoning_in_content": false,
+            "generation_prompt": "",
+            "samplers": [
+              "penalties",
+              "dry",
+              "top_n_sigma",
+              "top_k",
+              "typ_p",
+              "top_p",
+              "min_p",
+              "xtc",
+              "temperature"
+            ],
+            "speculative.types": "none",
+            "timings_per_token": false,
+            "post_sampling_probs": false,
+            "backend_sampling": false,
+            "lora": []
+          },
+          "n_ctx": 1024
+        },
+        "total_slots": 1,
+        "model_alias": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Qwen3-4B-Q4_K_M.gguf",
+        "model_ftype": "Q4_K - Medium",
+        "model_path": "D:\\projekty\\lastZAI\\lastz_model_benchmark\\models\\weights\\Qwen3-4B-Q4_K_M.gguf",
+        "modalities": {
+          "vision": false,
+          "video": false,
+          "audio": false
+        },
+        "media_marker": "<__media_kMtDCmaiUUFjN69vln2u9XanyVB5ukvU__>",
+        "endpoint_slots": true,
+        "endpoint_props": false,
+        "endpoint_metrics": true,
+        "ui": true,
+        "ui_settings": {},
+        "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0].role == 'system' %}\n        {{- messages[0].content + '\\n\\n' }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0].content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for index in range(ns.last_query_index, -1, -1) %}\n    {%- set message = messages[index] %}\n    {%- if ns.multi_step_tool and message.role == \"user\" and not('<tool_response>' in message.content and '</tool_response>' in message.content) %}\n        {%- set ns.multi_step_tool = false %}\n        {%- set ns.last_query_index = index %}\n    {%- endif %}\n{%- endfor %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set content = message.content %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is defined and message.reasoning_content is not none %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in message.content %}\n                {%- set content = message.content.split('</think>')[-1].lstrip('\\n') %}\n                {%- set reasoning_content = message.content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {%- if loop.last or (not loop.last and reasoning_content) %}\n                {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content.strip('\\n') + '\\n</think>\\n\\n' + content.lstrip('\\n') }}\n            {%- else %}\n                {{- '<|im_start|>' + message.role + '\\n' + content }}\n            {%- endif %}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if (loop.first and content) or (not loop.first) %}\n                    {{- '\\n' }}\n                {%- endif %}\n                {%- if tool_call.function %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {{- '<tool_call>\\n{\"name\": \"' }}\n                {{- tool_call.name }}\n                {{- '\", \"arguments\": ' }}\n                {%- if tool_call.arguments is string %}\n                    {{- tool_call.arguments }}\n                {%- else %}\n                    {{- tool_call.arguments | tojson }}\n                {%- endif %}\n                {{- '}\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.first or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- endif %}\n{%- endif %}",
+        "chat_template_caps": {
+          "supports_object_arguments": true,
+          "supports_parallel_tool_calls": true,
+          "supports_preserve_reasoning": false,
+          "supports_reasoning_effort": false,
+          "supports_string_content": true,
+          "supports_system_role": true,
+          "supports_tool_calls": true,
+          "supports_tools": true,
+          "supports_typed_content": false
+        },
+        "bos_token": "<|endoftext|>",
+        "eos_token": "<|im_end|>",
+        "build_info": "b11430-8345f3339",
+        "is_sleeping": false,
+        "cors_proxy_enabled": false
+      },
+      "backend_evidence": {
+        "loaded_backends": [
+          "CPU",
+          "CUDA",
+          "RPC"
+        ],
+        "selected_devices": [
+          "CUDA0"
+        ],
+        "offload": [
+          {
+            "offloaded": 37,
+            "total": 37
+          }
+        ],
+        "full_gpu_offload": true,
+        "buffers": [
+          {
+            "device": "CUDA0",
+            "kind": "model",
+            "mib": 2375.91
+          },
+          {
+            "device": "CUDA0",
+            "kind": "kv",
+            "mib": 144.0
+          },
+          {
+            "device": "CUDA0",
+            "kind": "compute",
+            "mib": 78.01
+          }
+        ],
+        "context_values": [
+          "1024"
+        ],
+        "speculative_mentions": [
+          "0.02.004.220 I spec common_specu: no implementations specified for speculative decoding"
+        ],
+        "verified": true,
+        "reason": "verified selected device and GPU layer offload"
+      },
+      "vram": {
+        "before_model_load": {
+          "name": "NVIDIA GeForce RTX 3050",
+          "memory_total_mib": 8192.0,
+          "memory_used_mib": 1124.0,
+          "gpu_utilization_pct": 40.0,
+          "memory_utilization_pct": 15.0,
+          "temperature_c": 44.0,
+          "memory_free_mib": 7068.0,
+          "captured_at": "2026-10-09T12:54:28+02:00"
+        },
+        "after_model_load": {
+          "name": "NVIDIA GeForce RTX 3050",
+          "memory_total_mib": 8192.0,
+          "memory_used_mib": 3828.0,
+          "gpu_utilization_pct": 57.0,
+          "memory_utilization_pct": 13.0,
+          "temperature_c": 47.0,
+          "memory_free_mib": 4364.0,
+          "captured_at": "2026-10-09T12:54:30+02:00"
+        },
+        "during_generation": {
+          "sample_count": 73,
+          "peak_memory_used_mib": 3830.0,
+          "minimum_memory_free_mib": 4362.0,
+          "first": {
+            "name": "NVIDIA GeForce RTX 3050",
+            "memory_total_mib": 8192.0,
+            "memory_used_mib": 3828.0,
+            "gpu_utilization_pct": 57.0,
+            "memory_utilization_pct": 13.0,
+            "temperature_c": 47.0,
+            "memory_free_mib": 4364.0,
+            "captured_at": "2026-10-09T12:54:30+02:00"
+          },
+          "last": {
+            "name": "NVIDIA GeForce RTX 3050",
+            "memory_total_mib": 8192.0,
+            "memory_used_mib": 3821.0,
+            "gpu_utilization_pct": 97.0,
+            "memory_utilization_pct": 84.0,
+            "temperature_c": 56.0,
+            "memory_free_mib": 4371.0,
+            "captured_at": "2026-10-09T12:54:40+02:00"
+          }
+        }
+      },
+      "startup_seconds": 2.122,
+      "cold_first_hit": {
+        "case_id": "short_rally_accept",
+        "length_bucket": "short",
+        "streaming": true,
+        "raw_output": "</think>\n\nI can join the rally after reset. What's the target and start time?",
+        "reasoning_output": "",
+        "e2e_ms": 652.34,
+        "ttfb_ms": 32.618,
+        "ttft_ms": 255.195,
+        "stream_chunks": 21,
+        "usage": {
+          "completion_tokens": 22,
+          "prompt_tokens": 235,
+          "total_tokens": 257,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 235,
+          "prompt_ms": 149.545,
+          "prompt_per_token_ms": 0.6363617021276595,
+          "prompt_per_second": 1571.433347821726,
+          "predicted_n": 22,
+          "predicted_ms": 470.057,
+          "predicted_per_token_ms": 22.383666666666667,
+          "predicted_per_second": 44.67543297940462
+        },
+        "metrics_delta": {
+          "prompt_tokens": 235.0,
+          "prompt_seconds": 0.148858,
+          "generation_tokens": 22.0,
+          "generation_seconds": 0.470057
+        },
+        "prompt_tokens_per_second": 1571.433347821726,
+        "generation_tokens_per_second": 44.67543297940462,
+        "quality": {
+          "score": 0.0,
+          "quality_pass": false,
+          "player_ready_pass": false,
+          "player_ready_gate_pass": false,
+          "meta_reasoning_leakage": true,
+          "meta_reasoning_reasons": [
+            "thinking_or_analysis_tag"
+          ],
+          "player_ready_text": "I can join the rally after reset. What's the target and start time?",
+          "diagnostic_player_ready_text": "I can join the rally after reset. What's the target and start time?",
+          "raw_character_count": 67,
+          "player_ready_character_count": 67,
+          "word_count": 13,
+          "sentence_count": 2,
+          "required_coverage": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "required_coverage_rate": 1.0,
+          "target_length_ok": false,
+          "sentence_count_ok": true,
+          "repetition_flag": false,
+          "forbidden_matches": [],
+          "maximum_characters": 950,
+          "raw_curly_apostrophe_count": 0,
+          "apostrophe_normalized": false,
+          "raw_straight_apostrophe_compatible": true,
+          "straight_apostrophe_compatible": true,
+          "delivery_validation": {
+            "schema_valid": true,
+            "transport_valid": true,
+            "legal": true,
+            "executor_payload": {
+              "action": "send_message",
+              "text": "I can join the rally after reset. What's the target and start time?"
+            },
+            "normalization": {
+              "raw_text": "I can join the rally after reset. What's the target and start time?",
+              "text": "I can join the rally after reset. What's the target and start time?",
+              "raw_character_count": 67,
+              "character_count": 67,
+              "raw_curly_apostrophe_count": 0,
+              "apostrophe_normalized": false,
+              "raw_straight_apostrophe_compatible": true,
+              "straight_apostrophe_compatible": true
+            },
+            "errors": []
+          },
+          "hard_failures": [
+            "meta_reasoning_leakage: thinking_or_analysis_tag"
+          ]
+        },
+        "error": null,
+        "phase": "cold_first_hit"
+      },
+      "warm_records": [
+        {
+          "case_id": "very_short_reset_ack",
+          "length_bucket": "very_short",
+          "streaming": true,
+          "raw_output": "</think>\n\nThanks for the message! I can join after the reset. What time would you like me to come in?",
+          "reasoning_output": "",
+          "e2e_ms": 798.115,
+          "ttfb_ms": 54.546,
+          "ttft_ms": 268.791,
+          "stream_chunks": 27,
+          "usage": {
+            "completion_tokens": 28,
+            "prompt_tokens": 229,
+            "total_tokens": 257,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 229,
+            "prompt_ms": 143.769,
+            "prompt_per_token_ms": 0.6278122270742358,
+            "prompt_per_second": 1592.8329472974006,
+            "predicted_n": 28,
+            "predicted_ms": 599.75,
+            "predicted_per_token_ms": 22.212962962962962,
+            "predicted_per_second": 45.018757815756565
+          },
+          "metrics_delta": {
+            "prompt_tokens": 229.0,
+            "prompt_seconds": 0.14322999999999997,
+            "generation_tokens": 28.0,
+            "generation_seconds": 0.5997499999999998
+          },
+          "prompt_tokens_per_second": 1592.8329472974006,
+          "generation_tokens_per_second": 45.018757815756565,
+          "quality": {
+            "score": 0.0,
+            "quality_pass": false,
+            "player_ready_pass": false,
+            "player_ready_gate_pass": false,
+            "meta_reasoning_leakage": true,
+            "meta_reasoning_reasons": [
+              "thinking_or_analysis_tag"
+            ],
+            "player_ready_text": "Thanks for the message! I can join after the reset. What time would you like me to come in?",
+            "diagnostic_player_ready_text": "Thanks for the message! I can join after the reset. What time would you like me to come in?",
+            "raw_character_count": 91,
+            "player_ready_character_count": 91,
+            "word_count": 19,
+            "sentence_count": 3,
+            "required_coverage": [
+              true,
+              true,
+              true
+            ],
+            "required_coverage_rate": 1.0,
+            "target_length_ok": false,
+            "sentence_count_ok": true,
+            "repetition_flag": false,
+            "forbidden_matches": [],
+            "maximum_characters": 950,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true,
+            "delivery_validation": {
+              "schema_valid": true,
+              "transport_valid": true,
+              "legal": true,
+              "executor_payload": {
+                "action": "send_message",
+                "text": "Thanks for the message! I can join after the reset. What time would you like me to come in?"
+              },
+              "normalization": {
+                "raw_text": "Thanks for the message! I can join after the reset. What time would you like me to come in?",
+                "text": "Thanks for the message! I can join after the reset. What time would you like me to come in?",
+                "raw_character_count": 91,
+                "character_count": 91,
+                "raw_curly_apostrophe_count": 0,
+                "apostrophe_normalized": false,
+                "raw_straight_apostrophe_compatible": true,
+                "straight_apostrophe_compatible": true
+              },
+              "errors": []
+            },
+            "hard_failures": [
+              "meta_reasoning_leakage: thinking_or_analysis_tag"
+            ]
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 1,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "medium_new_member_welcome",
+          "length_bucket": "medium",
+          "streaming": true,
+          "raw_output": "</think>\n\nWelcome to the alliance! We're glad you're here. Join us for daily tasks, ask questions in alliance chat, and check event timers. Stay active and have fun!",
+          "reasoning_output": "",
+          "e2e_ms": 1073.104,
+          "ttfb_ms": 26.33,
+          "ttft_ms": 238.59,
+          "stream_chunks": 40,
+          "usage": {
+            "completion_tokens": 41,
+            "prompt_tokens": 234,
+            "total_tokens": 275,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 234,
+            "prompt_ms": 143.056,
+            "prompt_per_token_ms": 0.6113504273504274,
+            "prompt_per_second": 1635.7230734817133,
+            "predicted_n": 41,
+            "predicted_ms": 903.67,
+            "predicted_per_token_ms": 22.591749999999998,
+            "predicted_per_second": 44.2639459094581
+          },
+          "metrics_delta": {
+            "prompt_tokens": 234.0,
+            "prompt_seconds": 0.14240900000000006,
+            "generation_tokens": 41.0,
+            "generation_seconds": 0.90367
+          },
+          "prompt_tokens_per_second": 1635.7230734817133,
+          "generation_tokens_per_second": 44.2639459094581,
+          "quality": {
+            "score": 0.0,
+            "quality_pass": false,
+            "player_ready_pass": false,
+            "player_ready_gate_pass": false,
+            "meta_reasoning_leakage": true,
+            "meta_reasoning_reasons": [
+              "thinking_or_analysis_tag"
+            ],
+            "player_ready_text": "Welcome to the alliance! We're glad you're here. Join us for daily tasks, ask questions in alliance chat, and check event timers. Stay active and have fun!",
+            "diagnostic_player_ready_text": "Welcome to the alliance! We're glad you're here. Join us for daily tasks, ask questions in alliance chat, and check event timers. Stay active and have fun!",
+            "raw_character_count": 155,
+            "player_ready_character_count": 155,
+            "word_count": 27,
+            "sentence_count": 4,
+            "required_coverage": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "required_coverage_rate": 1.0,
+            "target_length_ok": false,
+            "sentence_count_ok": true,
+            "repetition_flag": false,
+            "forbidden_matches": [],
+            "maximum_characters": 950,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true,
+            "delivery_validation": {
+              "schema_valid": true,
+              "transport_valid": true,
+              "legal": true,
+              "executor_payload": {
+                "action": "send_message",
+                "text": "Welcome to the alliance! We're glad you're here. Join us for daily tasks, ask questions in alliance chat, and check event timers. Stay active and have fun!"
+              },
+              "normalization": {
+                "raw_text": "Welcome to the alliance! We're glad you're here. Join us for daily tasks, ask questions in alliance chat, and check event timers. Stay active and have fun!",
+                "text": "Welcome to the alliance! We're glad you're here. Join us for daily tasks, ask questions in alliance chat, and check event timers. Stay active and have fun!",
+                "raw_character_count": 155,
+                "character_count": 155,
+                "raw_curly_apostrophe_count": 0,
+                "apostrophe_normalized": false,
+                "raw_straight_apostrophe_compatible": true,
+                "straight_apostrophe_compatible": true
+              },
+              "errors": []
+            },
+            "hard_failures": [
+              "meta_reasoning_leakage: thinking_or_analysis_tag"
+            ]
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 2,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "short_polite_decline",
+          "length_bucket": "short",
+          "streaming": true,
+          "raw_output": "</think>\n\nI'm sorry, but I can't join this rally. Wish them luck, and feel free to reach out if you need help with the next one.",
+          "reasoning_output": "",
+          "e2e_ms": 985.918,
+          "ttfb_ms": 42.923,
+          "ttft_ms": 256.142,
+          "stream_chunks": 36,
+          "usage": {
+            "completion_tokens": 37,
+            "prompt_tokens": 232,
+            "total_tokens": 269,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 232,
+            "prompt_ms": 142.612,
+            "prompt_per_token_ms": 0.6147068965517242,
+            "prompt_per_second": 1626.7915743415701,
+            "predicted_n": 37,
+            "predicted_ms": 800.32,
+            "predicted_per_token_ms": 22.23111111111111,
+            "predicted_per_second": 44.98200719712115
+          },
+          "metrics_delta": {
+            "prompt_tokens": 232.0,
+            "prompt_seconds": 0.142173,
+            "generation_tokens": 37.0,
+            "generation_seconds": 0.8003199999999997
+          },
+          "prompt_tokens_per_second": 1626.7915743415701,
+          "generation_tokens_per_second": 44.98200719712115,
+          "quality": {
+            "score": 0.0,
+            "quality_pass": false,
+            "player_ready_pass": false,
+            "player_ready_gate_pass": false,
+            "meta_reasoning_leakage": true,
+            "meta_reasoning_reasons": [
+              "thinking_or_analysis_tag"
+            ],
+            "player_ready_text": "I'm sorry, but I can't join this rally. Wish them luck, and feel free to reach out if you need help with the next one.",
+            "diagnostic_player_ready_text": "I'm sorry, but I can't join this rally. Wish them luck, and feel free to reach out if you need help with the next one.",
+            "raw_character_count": 118,
+            "player_ready_character_count": 118,
+            "word_count": 25,
+            "sentence_count": 2,
+            "required_coverage": [
+              true,
+              true,
+              true
+            ],
+            "required_coverage_rate": 1.0,
+            "target_length_ok": true,
+            "sentence_count_ok": true,
+            "repetition_flag": false,
+            "forbidden_matches": [],
+            "maximum_characters": 950,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true,
+            "delivery_validation": {
+              "schema_valid": true,
+              "transport_valid": true,
+              "legal": true,
+              "executor_payload": {
+                "action": "send_message",
+                "text": "I'm sorry, but I can't join this rally. Wish them luck, and feel free to reach out if you need help with the next one."
+              },
+              "normalization": {
+                "raw_text": "I'm sorry, but I can't join this rally. Wish them luck, and feel free to reach out if you need help with the next one.",
+                "text": "I'm sorry, but I can't join this rally. Wish them luck, and feel free to reach out if you need help with the next one.",
+                "raw_character_count": 118,
+                "character_count": 118,
+                "raw_curly_apostrophe_count": 0,
+                "apostrophe_normalized": false,
+                "raw_straight_apostrophe_compatible": true,
+                "straight_apostrophe_compatible": true
+              },
+              "errors": []
+            },
+            "hard_failures": [
+              "meta_reasoning_leakage: thinking_or_analysis_tag"
+            ]
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 3,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "medium_resource_plan",
+          "length_bucket": "medium",
+          "streaming": true,
+          "raw_output": "</think>\n\nHey there! Tomorrow's event is going to be a big one, so we should make sure to gather enough resources and protect our troops. Save any upgrades for the event window and make sure your base is ready. Let me know if you need help setting up or if you're struggling with anything. We got this!",
+          "reasoning_output": "",
+          "e2e_ms": 1779.257,
+          "ttfb_ms": 60.339,
+          "ttft_ms": 275.056,
+          "stream_chunks": 69,
+          "usage": {
+            "completion_tokens": 70,
+            "prompt_tokens": 237,
+            "total_tokens": 307,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 237,
+            "prompt_ms": 144.284,
+            "prompt_per_token_ms": 0.6087932489451476,
+            "prompt_per_second": 1642.5937733913672,
+            "predicted_n": 70,
+            "predicted_ms": 1574.614,
+            "predicted_per_token_ms": 22.82049275362319,
+            "predicted_per_second": 43.82026325181918
+          },
+          "metrics_delta": {
+            "prompt_tokens": 237.0,
+            "prompt_seconds": 0.14374699999999996,
+            "generation_tokens": 70.0,
+            "generation_seconds": 1.5746200000000004
+          },
+          "prompt_tokens_per_second": 1642.5937733913672,
+          "generation_tokens_per_second": 43.82026325181918,
+          "quality": {
+            "score": 0.0,
+            "quality_pass": false,
+            "player_ready_pass": false,
+            "player_ready_gate_pass": false,
+            "meta_reasoning_leakage": true,
+            "meta_reasoning_reasons": [
+              "thinking_or_analysis_tag"
+            ],
+            "player_ready_text": "Hey there! Tomorrow's event is going to be a big one, so we should make sure to gather enough resources and protect our troops. Save any upgrades for the event window and make sure your base is ready. Let me know if you need help setting up or if you're struggling with anything. We got this!",
+            "diagnostic_player_ready_text": "Hey there! Tomorrow's event is going to be a big one, so we should make sure to gather enough resources and protect our troops. Save any upgrades for the event window and make sure your base is ready. Let me know if you need help setting up or if you're struggling with anything. We got this!",
+            "raw_character_count": 292,
+            "player_ready_character_count": 292,
+            "word_count": 56,
+            "sentence_count": 5,
+            "required_coverage": [
+              true,
+              false,
+              false,
+              true
+            ],
+            "required_coverage_rate": 0.5,
+            "target_length_ok": true,
+            "sentence_count_ok": true,
+            "repetition_flag": false,
+            "forbidden_matches": [],
+            "maximum_characters": 950,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true,
+            "delivery_validation": {
+              "schema_valid": true,
+              "transport_valid": true,
+              "legal": true,
+              "executor_payload": {
+                "action": "send_message",
+                "text": "Hey there! Tomorrow's event is going to be a big one, so we should make sure to gather enough resources and protect our troops. Save any upgrades for the event window and make sure your base is ready. Let me know if you need help setting up or if you're struggling with anything. We got this!"
+              },
+              "normalization": {
+                "raw_text": "Hey there! Tomorrow's event is going to be a big one, so we should make sure to gather enough resources and protect our troops. Save any upgrades for the event window and make sure your base is ready. Let me know if you need help setting up or if you're struggling with anything. We got this!",
+                "text": "Hey there! Tomorrow's event is going to be a big one, so we should make sure to gather enough resources and protect our troops. Save any upgrades for the event window and make sure your base is ready. Let me know if you need help setting up or if you're struggling with anything. We got this!",
+                "raw_character_count": 292,
+                "character_count": 292,
+                "raw_curly_apostrophe_count": 0,
+                "apostrophe_normalized": false,
+                "raw_straight_apostrophe_compatible": true,
+                "straight_apostrophe_compatible": true
+              },
+              "errors": []
+            },
+            "hard_failures": [
+              "meta_reasoning_leakage: thinking_or_analysis_tag"
+            ]
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 4,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "very_short_troop_status",
+          "length_bucket": "very_short",
+          "streaming": true,
+          "raw_output": "</think>\n\nI'm checking troop recovery. Still planning the march?",
+          "reasoning_output": "",
+          "e2e_ms": 553.15,
+          "ttfb_ms": 45.376,
+          "ttft_ms": 262.95,
+          "stream_chunks": 16,
+          "usage": {
+            "completion_tokens": 17,
+            "prompt_tokens": 225,
+            "total_tokens": 242,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 225,
+            "prompt_ms": 144.646,
+            "prompt_per_token_ms": 0.6428711111111111,
+            "prompt_per_second": 1555.521756564302,
+            "predicted_n": 17,
+            "predicted_ms": 363.044,
+            "predicted_per_token_ms": 22.69025,
+            "predicted_per_second": 44.07179295071672
+          },
+          "metrics_delta": {
+            "prompt_tokens": 225.0,
+            "prompt_seconds": 0.1437449999999999,
+            "generation_tokens": 17.0,
+            "generation_seconds": 0.3630399999999998
+          },
+          "prompt_tokens_per_second": 1555.521756564302,
+          "generation_tokens_per_second": 44.07179295071672,
+          "quality": {
+            "score": 0.0,
+            "quality_pass": false,
+            "player_ready_pass": false,
+            "player_ready_gate_pass": false,
+            "meta_reasoning_leakage": true,
+            "meta_reasoning_reasons": [
+              "thinking_or_analysis_tag"
+            ],
+            "player_ready_text": "I'm checking troop recovery. Still planning the march?",
+            "diagnostic_player_ready_text": "I'm checking troop recovery. Still planning the march?",
+            "raw_character_count": 54,
+            "player_ready_character_count": 54,
+            "word_count": 8,
+            "sentence_count": 2,
+            "required_coverage": [
+              true,
+              true,
+              true
+            ],
+            "required_coverage_rate": 1.0,
+            "target_length_ok": true,
+            "sentence_count_ok": true,
+            "repetition_flag": false,
+            "forbidden_matches": [],
+            "maximum_characters": 950,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true,
+            "delivery_validation": {
+              "schema_valid": true,
+              "transport_valid": true,
+              "legal": true,
+              "executor_payload": {
+                "action": "send_message",
+                "text": "I'm checking troop recovery. Still planning the march?"
+              },
+              "normalization": {
+                "raw_text": "I'm checking troop recovery. Still planning the march?",
+                "text": "I'm checking troop recovery. Still planning the march?",
+                "raw_character_count": 54,
+                "character_count": 54,
+                "raw_curly_apostrophe_count": 0,
+                "apostrophe_normalized": false,
+                "raw_straight_apostrophe_compatible": true,
+                "straight_apostrophe_compatible": true
+              },
+              "errors": []
+            },
+            "hard_failures": [
+              "meta_reasoning_leakage: thinking_or_analysis_tag"
+            ]
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 5,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "longer_rally_coordination",
+          "length_bucket": "longer",
+          "streaming": true,
+          "raw_output": "</think>\n\nThanks for the hard work on the rally! Let me know if you need any support. Just make sure your troops are at full health and the march timing is accurate. Hold resources until we get the drop, then move fast. Let me know the target and when you want to start so I can prep. You're doing great—keep pushing!",
+          "reasoning_output": "",
+          "e2e_ms": 1878.452,
+          "ttfb_ms": 23.88,
+          "ttft_ms": 240.29,
+          "stream_chunks": 75,
+          "usage": {
+            "completion_tokens": 76,
+            "prompt_tokens": 252,
+            "total_tokens": 328,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 252,
+            "prompt_ms": 147.365,
+            "prompt_per_token_ms": 0.584781746031746,
+            "prompt_per_second": 1710.039697350117,
+            "predicted_n": 76,
+            "predicted_ms": 1707.22,
+            "predicted_per_token_ms": 22.762933333333333,
+            "predicted_per_second": 43.93106922365014
+          },
+          "metrics_delta": {
+            "prompt_tokens": 252.0,
+            "prompt_seconds": 0.1467400000000001,
+            "generation_tokens": 76.0,
+            "generation_seconds": 1.7072200000000004
+          },
+          "prompt_tokens_per_second": 1710.039697350117,
+          "generation_tokens_per_second": 43.93106922365014,
+          "quality": {
+            "score": 0.0,
+            "quality_pass": false,
+            "player_ready_pass": false,
+            "player_ready_gate_pass": false,
+            "meta_reasoning_leakage": true,
+            "meta_reasoning_reasons": [
+              "thinking_or_analysis_tag"
+            ],
+            "player_ready_text": "Thanks for the hard work on the rally! Let me know if you need any support. Just make sure your troops are at full health and the march timing is accurate. Hold resources until we get the drop, then move fast. Let me know the target and when you want to start so I can prep. You're doing great—keep pushing!",
+            "diagnostic_player_ready_text": "Thanks for the hard work on the rally! Let me know if you need any support. Just make sure your troops are at full health and the march timing is accurate. Hold resources until we get the drop, then move fast. Let me know the target and when you want to start so I can prep. You're doing great—keep pushing!",
+            "raw_character_count": 307,
+            "player_ready_character_count": 307,
+            "word_count": 61,
+            "sentence_count": 6,
+            "required_coverage": [
+              true,
+              false,
+              true,
+              false,
+              true,
+              false,
+              true
+            ],
+            "required_coverage_rate": 0.5714285714285714,
+            "target_length_ok": false,
+            "sentence_count_ok": true,
+            "repetition_flag": false,
+            "forbidden_matches": [],
+            "maximum_characters": 950,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true,
+            "delivery_validation": {
+              "schema_valid": true,
+              "transport_valid": true,
+              "legal": true,
+              "executor_payload": {
+                "action": "send_message",
+                "text": "Thanks for the hard work on the rally! Let me know if you need any support. Just make sure your troops are at full health and the march timing is accurate. Hold resources until we get the drop, then move fast. Let me know the target and when you want to start so I can prep. You're doing great—keep pushing!"
+              },
+              "normalization": {
+                "raw_text": "Thanks for the hard work on the rally! Let me know if you need any support. Just make sure your troops are at full health and the march timing is accurate. Hold resources until we get the drop, then move fast. Let me know the target and when you want to start so I can prep. You're doing great—keep pushing!",
+                "text": "Thanks for the hard work on the rally! Let me know if you need any support. Just make sure your troops are at full health and the march timing is accurate. Hold resources until we get the drop, then move fast. Let me know the target and when you want to start so I can prep. You're doing great—keep pushing!",
+                "raw_character_count": 307,
+                "character_count": 307,
+                "raw_curly_apostrophe_count": 0,
+                "apostrophe_normalized": false,
+                "raw_straight_apostrophe_compatible": true,
+                "straight_apostrophe_compatible": true
+              },
+              "errors": []
+            },
+            "hard_failures": [
+              "meta_reasoning_leakage: thinking_or_analysis_tag"
+            ]
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 6,
+          "random_seed": 20261010
+        },
+        {
+          "case_id": "short_rally_accept",
+          "length_bucket": "short",
+          "streaming": true,
+          "raw_output": "</think>\n\nI can join the rally after reset. What's the target and start time?",
+          "reasoning_output": "",
+          "e2e_ms": 681.432,
+          "ttfb_ms": 60.954,
+          "ttft_ms": 275.813,
+          "stream_chunks": 21,
+          "usage": {
+            "completion_tokens": 22,
+            "prompt_tokens": 235,
+            "total_tokens": 257,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 235,
+            "prompt_ms": 144.001,
+            "prompt_per_token_ms": 0.6127702127659574,
+            "prompt_per_second": 1631.933111575614,
+            "predicted_n": 22,
+            "predicted_ms": 476.478,
+            "predicted_per_token_ms": 22.68942857142857,
+            "predicted_per_second": 44.07338848803093
+          },
+          "metrics_delta": {
+            "prompt_tokens": 235.0,
+            "prompt_seconds": 0.14339999999999997,
+            "generation_tokens": 22.0,
+            "generation_seconds": 0.47647999999999957
+          },
+          "prompt_tokens_per_second": 1631.933111575614,
+          "generation_tokens_per_second": 44.07338848803093,
+          "quality": {
+            "score": 0.0,
+            "quality_pass": false,
+            "player_ready_pass": false,
+            "player_ready_gate_pass": false,
+            "meta_reasoning_leakage": true,
+            "meta_reasoning_reasons": [
+              "thinking_or_analysis_tag"
+            ],
+            "player_ready_text": "I can join the rally after reset. What's the target and start time?",
+            "diagnostic_player_ready_text": "I can join the rally after reset. What's the target and start time?",
+            "raw_character_count": 67,
+            "player_ready_character_count": 67,
+            "word_count": 13,
+            "sentence_count": 2,
+            "required_coverage": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "required_coverage_rate": 1.0,
+            "target_length_ok": false,
+            "sentence_count_ok": true,
+            "repetition_flag": false,
+            "forbidden_matches": [],
+            "maximum_characters": 950,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true,
+            "delivery_validation": {
+              "schema_valid": true,
+              "transport_valid": true,
+              "legal": true,
+              "executor_payload": {
+                "action": "send_message",
+                "text": "I can join the rally after reset. What's the target and start time?"
+              },
+              "normalization": {
+                "raw_text": "I can join the rally after reset. What's the target and start time?",
+                "text": "I can join the rally after reset. What's the target and start time?",
+                "raw_character_count": 67,
+                "character_count": 67,
+                "raw_curly_apostrophe_count": 0,
+                "apostrophe_normalized": false,
+                "raw_straight_apostrophe_compatible": true,
+                "straight_apostrophe_compatible": true
+              },
+              "errors": []
+            },
+            "hard_failures": [
+              "meta_reasoning_leakage: thinking_or_analysis_tag"
+            ]
+          },
+          "error": null,
+          "phase": "warm",
+          "round": 1,
+          "random_position": 7,
+          "random_seed": 20261010
+        }
+      ],
+      "summary": {
+        "cold_first_hit": {
+          "case_id": "short_rally_accept",
+          "length_bucket": "short",
+          "streaming": true,
+          "raw_output": "</think>\n\nI can join the rally after reset. What's the target and start time?",
+          "reasoning_output": "",
+          "e2e_ms": 652.34,
+          "ttfb_ms": 32.618,
+          "ttft_ms": 255.195,
+          "stream_chunks": 21,
+          "usage": {
+            "completion_tokens": 22,
+            "prompt_tokens": 235,
+            "total_tokens": 257,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 235,
+            "prompt_ms": 149.545,
+            "prompt_per_token_ms": 0.6363617021276595,
+            "prompt_per_second": 1571.433347821726,
+            "predicted_n": 22,
+            "predicted_ms": 470.057,
+            "predicted_per_token_ms": 22.383666666666667,
+            "predicted_per_second": 44.67543297940462
+          },
+          "metrics_delta": {
+            "prompt_tokens": 235.0,
+            "prompt_seconds": 0.148858,
+            "generation_tokens": 22.0,
+            "generation_seconds": 0.470057
+          },
+          "prompt_tokens_per_second": 1571.433347821726,
+          "generation_tokens_per_second": 44.67543297940462,
+          "quality": {
+            "score": 0.0,
+            "quality_pass": false,
+            "player_ready_pass": false,
+            "player_ready_gate_pass": false,
+            "meta_reasoning_leakage": true,
+            "meta_reasoning_reasons": [
+              "thinking_or_analysis_tag"
+            ],
+            "player_ready_text": "I can join the rally after reset. What's the target and start time?",
+            "diagnostic_player_ready_text": "I can join the rally after reset. What's the target and start time?",
+            "raw_character_count": 67,
+            "player_ready_character_count": 67,
+            "word_count": 13,
+            "sentence_count": 2,
+            "required_coverage": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "required_coverage_rate": 1.0,
+            "target_length_ok": false,
+            "sentence_count_ok": true,
+            "repetition_flag": false,
+            "forbidden_matches": [],
+            "maximum_characters": 950,
+            "raw_curly_apostrophe_count": 0,
+            "apostrophe_normalized": false,
+            "raw_straight_apostrophe_compatible": true,
+            "straight_apostrophe_compatible": true,
+            "delivery_validation": {
+              "schema_valid": true,
+              "transport_valid": true,
+              "legal": true,
+              "executor_payload": {
+                "action": "send_message",
+                "text": "I can join the rally after reset. What's the target and start time?"
+              },
+              "normalization": {
+                "raw_text": "I can join the rally after reset. What's the target and start time?",
+                "text": "I can join the rally after reset. What's the target and start time?",
+                "raw_character_count": 67,
+                "character_count": 67,
+                "raw_curly_apostrophe_count": 0,
+                "apostrophe_normalized": false,
+                "raw_straight_apostrophe_compatible": true,
+                "straight_apostrophe_compatible": true
+              },
+              "errors": []
+            },
+            "hard_failures": [
+              "meta_reasoning_leakage: thinking_or_analysis_tag"
+            ]
+          },
+          "error": null,
+          "phase": "cold_first_hit"
+        },
+        "warm": {
+          "streaming": {
+            "requests": 7,
+            "quality_mean": 0.0,
+            "quality_min": 0.0,
+            "quality_pass_rate": 0.0,
+            "player_ready_pass_rate": 0.0,
+            "player_ready_gate_pass_rate": 0.0,
+            "meta_reasoning_leakage_count": 7,
+            "hard_failure_count": 7,
+            "errors": 0,
+            "end_to_end_ms": {
+              "n": 7,
+              "min": 553.15,
+              "mean": 1107.061,
+              "p50": 985.918,
+              "p95": 1848.693,
+              "p99": 1872.5,
+              "max": 1878.452
+            },
+            "ttfb_ms": {
+              "n": 7,
+              "min": 23.88,
+              "mean": 44.907,
+              "p50": 45.376,
+              "p95": 60.77,
+              "p99": 60.917,
+              "max": 60.954
+            },
+            "ttft_ms": {
+              "n": 7,
+              "min": 238.59,
+              "mean": 259.662,
+              "p50": 262.95,
+              "p95": 275.586,
+              "p99": 275.768,
+              "max": 275.813
+            },
+            "prompt_tokens_per_second": {
+              "n": 7,
+              "min": 1555.522,
+              "mean": 1627.919,
+              "p50": 1631.933,
+              "p95": 1689.806,
+              "p99": 1705.993,
+              "max": 1710.04
+            },
+            "generation_tokens_per_second": {
+              "n": 7,
+              "min": 43.82,
+              "mean": 44.309,
+              "p50": 44.073,
+              "p95": 45.008,
+              "p99": 45.017,
+              "max": 45.019
+            },
+            "player_ready_character_count": {
+              "n": 7,
+              "min": 54.0,
+              "mean": 154.857,
+              "p50": 118.0,
+              "p95": 302.5,
+              "p99": 306.1,
+              "max": 307.0
+            },
+            "raw_character_count": {
+              "n": 7,
+              "min": 54.0,
+              "mean": 154.857,
+              "p50": 118.0,
+              "p95": 302.5,
+              "p99": 306.1,
+              "max": 307.0
+            },
+            "apostrophe_normalization_count": 0,
+            "raw_curly_apostrophe_count": 0
+          }
+        }
+      },
+      "error": null
+    }
+  ],
+  "recommendations": {
+    "action_production_configuration": null,
+    "chat_production_configuration": null,
+    "action_qualified_count": 0,
+    "chat_qualified_count": 0,
+    "meta_reasoning_leakage_observed": true,
+    "chat_recommendation_status": "withheld: meta-reasoning leakage was detected; fix the player-ready gate/model output before selecting a chat winner"
+  }
+}
